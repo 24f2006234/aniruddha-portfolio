@@ -20,7 +20,7 @@ export default function Certificates() {
           <h2 className="section-title">My Certificates</h2>
         </motion.div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem', maxWidth: '800px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1.5rem, 5vw, 2.5rem)', maxWidth: '800px' }}>
           {certificates.map((cert, i) => (
             <motion.div
               key={i}
@@ -28,14 +28,14 @@ export default function Certificates() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}
+              style={{ display: 'flex', gap: 'clamp(1rem, 3vw, 1.5rem)', alignItems: 'flex-start' }}
             >
-              <div style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--text-muted)', minWidth: '40px', lineHeight: 1 }}>
+              <div style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', fontWeight: '800', color: 'var(--text-muted)', minWidth: '30px', lineHeight: 1 }}>
                 {(i + 1).toString().padStart(2, '0')}.
               </div>
               <div>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: '700', color: 'var(--text-primary)', margin: '0 0 0.5rem 0', lineHeight: 1.2 }}>{cert.title}</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', margin: 0 }}>{cert.issuer}</p>
+                <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', fontWeight: '700', color: 'var(--text-primary)', margin: '0 0 0.5rem 0', lineHeight: 1.2 }}>{cert.title}</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)', margin: 0 }}>{cert.issuer}</p>
               </div>
             </motion.div>
           ))}

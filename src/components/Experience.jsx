@@ -11,7 +11,7 @@ export default function Experience() {
     <section id="experience">
       <div className="container">
         {/* Headings as Tabs */}
-        <div style={{ display: 'flex', gap: '3rem', marginBottom: '3rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(1.5rem, 5vw, 3rem)', marginBottom: '2rem', alignItems: 'center' }}>
           <h2 
             onClick={() => setActiveTab('Education')}
             className="section-title"
@@ -19,6 +19,7 @@ export default function Experience() {
               cursor: 'pointer', 
               color: activeTab === 'Education' ? 'var(--text-primary)' : 'var(--text-muted)',
               margin: 0,
+              fontSize: 'clamp(1.5rem, 5vw, 2.5rem)',
               transition: 'color 0.3s ease'
             }}
           >
@@ -31,6 +32,7 @@ export default function Experience() {
               cursor: 'pointer', 
               color: activeTab === 'Experience' ? 'var(--text-primary)' : 'var(--text-muted)',
               margin: 0,
+              fontSize: 'clamp(1.5rem, 5vw, 2.5rem)',
               transition: 'color 0.3s ease'
             }}
           >
@@ -50,7 +52,7 @@ export default function Experience() {
               >
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
                   {/* IIT Madras */}
-                  <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(1rem, 4vw, 2rem)', alignItems: 'center' }}>
                     <div style={{ width: '80px', height: '80px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fff', borderRadius: '50%', overflow: 'hidden' }}>
                       <img 
                         src={iitmLogo}
@@ -74,7 +76,7 @@ export default function Experience() {
                   </div>
 
                   {/* Adamas University */}
-                  <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(1rem, 4vw, 2rem)', alignItems: 'center' }}>
                     <div style={{ width: '80px', height: '80px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fff', borderRadius: '50%', overflow: 'hidden' }}>
                       <img 
                         src={adamasLogo}

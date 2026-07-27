@@ -1,0 +1,626 @@
+.skills-section {
+  padding: 8rem 0;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.skills-header {
+  text-align: left;
+  margin-bottom: 5rem;
+}
+
+.skills-bento {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.skill-bento-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--bg-secondary) 60%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 10%, transparent);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  min-height: 200px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* Bento Card Sizes */
+.card-languages {
+  grid-column: span 3;
+}
+
+.card-frontend {
+  grid-column: span 3;
+}
+
+.card-backend {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.card-database {
+  grid-column: span 3;
+}
+
+.card-toolsplatforms {
+  grid-column: span 2;
+}
+
+.card-mldata, .card-corecs {
+  grid-column: span 4;
+}
+
+.card-leetcode {
+  grid-column: span 6;
+  min-height: auto;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .skills-section {
+    padding: 6rem 0;
+  }
+
+  .skills-bento {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .card-languages {
+    grid-column: span 2;
+  }
+
+  .card-frontend {
+    grid-column: span 2;
+  }
+
+  .card-backend {
+    grid-column: span 2;
+  }
+
+  .card-database {
+    grid-column: span 2;
+  }
+
+  .card-toolsplatforms {
+    grid-column: span 1;
+  }
+
+  .card-mldata, .card-corecs {
+    grid-column: span 2;
+  }
+
+  .card-leetcode {
+    grid-column: span 2;
+  }
+
+  .skill-bento-card {
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 5rem 0;
+  }
+
+  .skills-header {
+    margin-bottom: 3rem;
+  }
+
+  .skills-bento {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card-languages {
+    grid-column: span 1;
+  }
+
+  .card-frontend {
+    grid-column: span 1;
+  }
+
+  .card-backend {
+    grid-column: span 1;
+  }
+
+  .card-database {
+    grid-column: span 1;
+  }
+
+  .card-toolsplatforms {
+    grid-column: span 1;
+  }
+
+  .card-mldata, .card-corecs {
+    grid-column: span 1;
+  }
+
+  .card-leetcode {
+    grid-column: span 1;
+  }
+
+  .skill-card-content {
+    padding: 1.75rem;
+  }
+
+  .skill-cat-header {
+    gap: 0.75rem;
+  }
+
+  .skill-cat-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .skill-cat-name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-section {
+    padding: 3.5rem 0;
+  }
+
+  .skills-bento {
+    gap: 0.75rem;
+  }
+
+  .skill-bento-card {
+    min-height: 130px;
+  }
+
+  .skill-card-content {
+    padding: 1.25rem;
+  }
+
+  .skill-cat-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .skill-cat-name {
+    font-size: 0.95rem;
+  }
+
+  .skill-pills {
+    gap: 0.5rem;
+  }
+
+  .skill-pill {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.7rem;
+  }
+}
+
+.skill-card-glass {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+
+.skill-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-cat-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.skill-cat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.skill-bento-card:hover .skill-cat-icon {
+  transform: scale(1.1) rotate(-5deg);
+  background: var(--bento-color);
+  color: var(--text-on-primary);
+}
+
+.skill-cat-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.skill-pill {
+  padding: 0.5rem 1rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 550;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.skill-bento-card:hover .skill-pill:hover {
+  background: var(--bento-color);
+  color: #FFFFFF;
+  border-color: var(--bento-color);
+  transform: translateY(-2px);
+}
+
+
+
+.skill-bento-card:hover {
+  border-color: var(--bento-color);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 1000px) {
+  .skills-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-languages,
+  .card-frontend,
+  .card-backend,
+  .card-database,
+  .card-toolsplatforms,
+  .card-mldata, .card-corecs {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .skills-header {
+    margin-bottom: 3rem;
+  }
+
+  .skills-bento {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .card-languages,
+  .card-frontend,
+  .card-backend,
+  .card-database,
+  .card-toolsplatforms,
+  .card-mldata, .card-corecs {
+    grid-column: span 1;
+    min-height: 160px;
+  }
+
+  .skill-card-content {
+    padding: 1.5rem;
+  }
+
+  .skill-cat-header {
+    margin-bottom: 1rem;
+  }
+
+  .skill-cat-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .skills-section {
+    padding: 3rem 1rem;
+  }
+
+  .skills-header {
+    margin-bottom: 2rem;
+  }
+
+  .skills-bento {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .skill-bento-card {
+    min-height: 150px;
+  }
+
+  .skill-card-content {
+    padding: 1.25rem;
+  }
+
+  .skill-cat-name {
+    font-size: 1.1rem;
+  }
+
+  .skill-pills {
+    gap: 0.5rem;
+  }
+
+  .skill-pill {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-card-content {
+    padding: 1rem;
+  }
+
+  .skill-cat-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .skill-cat-name {
+    font-size: 1rem;
+  }
+}
+
+/* LeetCode Mini Bento Card Custom Styles */
+.leetcode-mini-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2.25rem !important;
+}
+
+.leetcode-mini-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
+  padding-bottom: 1rem;
+}
+
+.leetcode-mini-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.leetcode-icon-bg {
+  color: #ffa116 !important;
+  background: color-mix(in srgb, #ffa116 10%, transparent) !important;
+}
+
+.leetcode-mini-username {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+  display: block;
+}
+
+.leetcode-mini-username a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: #ffa116;
+}
+
+.leetcode-mini-stats-top {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.leetcode-mini-stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.leetcode-mini-stat-badge.streak {
+  color: var(--clr-red);
+  border-color: color-mix(in srgb, var(--clr-red) 30%, transparent);
+  background: color-mix(in srgb, var(--clr-red) 6%, transparent);
+}
+
+.leetcode-mini-body {
+  display: grid;
+  grid-template-columns: 100px 1fr 120px;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .leetcode-mini-body {
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+  }
+
+  .leetcode-mini-meta {
+    grid-column: span 2;
+    flex-direction: row !important;
+    justify-content: space-around;
+    border-left: none !important;
+    border-top: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
+    padding-top: 1rem;
+    padding-left: 0 !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .leetcode-mini-body {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: left;
+  }
+
+  .leetcode-mini-meta {
+    grid-column: span 1;
+  }
+}
+
+/* Circle Progress */
+.leetcode-mini-circle-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leetcode-mini-circle-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.leetcode-circle-bg {
+  fill: none;
+  stroke: var(--border-light);
+}
+
+.leetcode-circle-progress {
+  fill: none;
+  stroke: #ffa116;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease-out;
+}
+
+.leetcode-mini-circle-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leetcode-mini-solved-num {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.leetcode-mini-solved-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-top: 0.1rem;
+}
+
+/* Progress Bars */
+.leetcode-mini-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.leetcode-mini-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.leetcode-mini-bar-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.leetcode-mini-bar-label {
+  text-transform: capitalize;
+}
+
+.leetcode-mini-bar-nums {
+  color: var(--text-primary);
+}
+
+.leetcode-mini-bar-total {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.leetcode-mini-bar-track {
+  width: 100%;
+  height: 5px;
+  background: var(--border-light);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.leetcode-mini-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 1s ease-out;
+}
+
+/* Meta stats on right */
+.leetcode-mini-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
+  height: 100%;
+  justify-content: center;
+}
+
+.leetcode-mini-meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.leetcode-mini-meta-val {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.leetcode-mini-meta-lbl {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-top: 0.1rem;
+}

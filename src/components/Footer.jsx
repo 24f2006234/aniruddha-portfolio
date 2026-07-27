@@ -3,6 +3,7 @@ import { Link } from "react-scroll";
 import { personalInfo } from "../data/portfolioData";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { ArrowUp } from "lucide-react";
+import uiCompanyLogo from "../assets/the ui company.png";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -58,13 +59,30 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '2rem' }}>
+          
           <p style={{ color: "var(--text-muted)", fontSize: "0.9rem", margin: 0 }}>
             &copy; {year} {personalInfo.name}. All rights reserved.
           </p>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <span style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>Designed & developed by</span>
+            <a 
+              href="https://the-ui-company.vercel.app/" 
+              target="_blank" 
+              rel="noreferrer" 
+              style={{ display: 'flex', alignItems: 'center', opacity: 0.8, transition: 'opacity 0.2s' }}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = 1} 
+              onMouseLeave={(e) => e.currentTarget.style.opacity = 0.8}
+            >
+              <img src={uiCompanyLogo} alt="The UI Company" style={{ height: '22px', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: '0.8' }} />
+            </a>
+          </div>
+
           <Link to="hero" smooth duration={800} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.9rem', cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}>
             Back to Top <ArrowUp size={16} />
           </Link>
+          
         </div>
 
       </div>

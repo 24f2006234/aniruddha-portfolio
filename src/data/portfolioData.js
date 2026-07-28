@@ -68,16 +68,19 @@ export const certifications = [
   {
     title: "1st Place — Coding Premier League",
     issuer: "Adamas University (SIGNIFIYA)",
+    image: "/achievements/au-footer-logo.png",
     icon: "award",
   },
   {
     title: "1st Runner-Up — InnovateX 2.0",
     issuer: "IMI Kolkata Techfest",
+    image: "/achievements/International_Management_Institute_Kolkata_Logo.svg",
     icon: "award",
   },
   {
     title: "Finalist — Hackforge, Srijan",
     issuer: "Jadavpur University",
+    image: "/achievements/Jadavpur_University_Logo.svg",
     icon: "award",
   },
   {

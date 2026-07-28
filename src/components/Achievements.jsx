@@ -42,7 +42,7 @@ export default function Achievements() {
                 overflow: 'hidden'
               }}>
                 {cert.image ? (
-                  <img src={cert.image} alt="Achievement" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={cert.image} alt="Achievement" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 ) : (
                   <Award size={28} color="var(--primary)" />
                 )}

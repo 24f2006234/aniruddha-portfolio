@@ -72,13 +72,45 @@
 }
 
 .hero-profile-name {
-  font-family: var(--heading);
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--text-primary);
   margin: 0;
   line-height: 1.1;
+  display: flex;
+  align-items: center;
+}
+
+.animated-name-svg {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  overflow: visible;
+}
+
+.animated-name-text {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
+  fill: transparent;
+  stroke: var(--text-primary);
+  stroke-width: 1.5px;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: drawName 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes drawName {
+  0% {
+    stroke-dashoffset: 1200;
+    fill: transparent;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: var(--text-primary);
+  }
 }
 
 .hero-profile-title {

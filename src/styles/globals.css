@@ -533,7 +533,7 @@ a {
 /* Section padding */
 section {
   min-height: auto;
-  padding: 1rem 0;
+  padding: 3rem 0;
   position: relative;
   display: flex;
   align-items: center;
@@ -541,7 +541,7 @@ section {
 
 @media (max-width: 768px) {
   section {
-    padding: 1rem 0;
+    padding: 2rem 0;
   }
 }
 

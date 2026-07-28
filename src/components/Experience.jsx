@@ -19,9 +19,6 @@ export default function Experience() {
               cursor: 'pointer', 
               color: activeTab === 'Education' ? 'var(--text-primary)' : 'var(--text-muted)',
               margin: 0,
-              fontSize: '1.25rem',
-              fontWeight: 500,
-              letterSpacing: '-0.02em',
               transition: 'color 0.3s ease'
             }}
           >
@@ -34,9 +31,6 @@ export default function Experience() {
               cursor: 'pointer', 
               color: activeTab === 'Experience' ? 'var(--text-primary)' : 'var(--text-muted)',
               margin: 0,
-              fontSize: '1.25rem',
-              fontWeight: 500,
-              letterSpacing: '-0.02em',
               transition: 'color 0.3s ease'
             }}
           >

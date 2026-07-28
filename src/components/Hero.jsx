@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { personalInfo } from "../data/portfolioData";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, BadgeCheck } from "lucide-react";
 import { FaGithub, FaLinkedin, FaDiscord, FaEnvelope, FaFileAlt } from "react-icons/fa";
 import heroBanner from "../assets/hero.png";
 import "../styles/Hero.css";
@@ -45,6 +45,7 @@ export default function Hero() {
             <div className="hero-profile-text">
               <h1 className="hero-profile-name" aria-label={personalInfo.name}>
                 {personalInfo.name}
+                <BadgeCheck size={26} color="#ffffff" fill="#1d9bf0" style={{ marginLeft: '8px', marginTop: '4px' }} />
               </h1>
               <p className="hero-profile-title">20, {personalInfo.title}, IND</p>
             </div>

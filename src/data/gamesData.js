@@ -61,6 +61,6 @@ export const gamesData = [
   },
   {
     title: "Death Stranding",
-    image: "https://steamcdn-a.akamaihd.net/steam/apps/3280350/library_600x900.jpg"
+    image: "https://steamcdn-a.akamaihd.net/steam/apps/1850570/library_600x900.jpg"
   }
 ];

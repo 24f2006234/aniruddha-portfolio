@@ -51,7 +51,7 @@ export default function Experience() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
                   {/* IIT Madras */}
                   <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
-                    <div style={{ width: '48px', height: '48px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fff', borderRadius: '8px', border: '1px solid var(--border-light)', overflow: 'hidden', padding: '4px' }}>
+                    <div style={{ width: '48px', height: '48px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                       <img 
                         src={iitmLogo}
                         alt="IIT Madras" 
@@ -75,7 +75,7 @@ export default function Experience() {
 
                   {/* Adamas University */}
                   <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
-                    <div style={{ width: '48px', height: '48px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fff', borderRadius: '8px', border: '1px solid var(--border-light)', overflow: 'hidden', padding: '4px' }}>
+                    <div style={{ width: '48px', height: '48px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                       <img 
                         src={adamasLogo}
                         alt="Adamas University" 

@@ -66,6 +66,8 @@
 }
 
 .nav-link-clean {
+  display: inline-flex;
+  align-items: center;
   padding: 0.25rem 0.75rem;
   font-size: 0.95rem;
   font-weight: 500;

@@ -75,7 +75,7 @@ export default function Footer() {
               onMouseEnter={(e) => e.currentTarget.style.opacity = 1} 
               onMouseLeave={(e) => e.currentTarget.style.opacity = 0.8}
             >
-              <img src={uiCompanyLogo} alt="The UI Company" style={{ height: '22px', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: '0.8' }} />
+              <img src={uiCompanyLogo} alt="The UI Company" className="ui-company-logo" />
             </a>
           </div>
 

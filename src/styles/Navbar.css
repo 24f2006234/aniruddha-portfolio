@@ -105,6 +105,77 @@
   background: var(--bg-secondary);
 }
 
+.navbar-dropdown-clean {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-trigger-clean {
+  cursor: pointer;
+}
+
+.dropdown-menu-clean {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 130px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 0.35rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.2s ease;
+  z-index: 100;
+  margin: 0;
+}
+
+.navbar-dropdown-clean:hover .dropdown-menu-clean {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item-clean {
+  display: block;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-item-clean:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.navbar-resume-clean {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border-light);
+  margin-right: 0.5rem;
+}
+
+.navbar-resume-clean:hover {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+}
+
 @media (max-width: 480px) {
   .nav-link-clean {
     font-size: 0.85rem;
@@ -113,6 +184,9 @@
   .navbar-right-clean {
     gap: 0.75rem;
   }
+  .navbar-resume-clean {
+    display: none;
+  }
 }
 
 [data-theme="dark"] .navbar-wrapper.scrolled {
@@ -120,11 +194,18 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+[data-theme="dark"] .dropdown-menu-clean {
+  background: rgba(20, 20, 20, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
 [data-theme="dark"] .nav-link-clean:hover,
 [data-theme="dark"] .nav-link-clean.active {
   background: rgba(255, 255, 255, 0.08);
 }
 
-[data-theme="dark"] .theme-toggle-clean:hover {
+[data-theme="dark"] .theme-toggle-clean:hover,
+[data-theme="dark"] .dropdown-item-clean:hover,
+[data-theme="dark"] .navbar-resume-clean:hover {
   background: rgba(255, 255, 255, 0.08);
 }

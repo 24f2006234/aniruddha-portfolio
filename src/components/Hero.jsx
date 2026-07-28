@@ -25,7 +25,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         >
-          <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" alt="Hero Banner" className="hero-banner-img" />
+          <img src="/banner.png" alt="Hero Banner" className="hero-banner-img" />
+          <div className="hero-banner-overlay" />
         </motion.div>
 
         <motion.div

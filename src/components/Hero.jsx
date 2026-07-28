@@ -51,23 +51,23 @@ export default function Hero() {
                 </svg>
               </h1>
               <p className="hero-profile-title">20, {personalInfo.title}, IND</p>
-              
-              <div className="hero-socials-minimal" style={{ marginTop: '1.25rem' }}>
-                <AnimatedSocialIcon href={personalInfo.github} title="GitHub" icon={FaGithub} />
-                <AnimatedSocialIcon href={`mailto:${personalInfo.email}`} title="Email" icon={FaEnvelope} />
-                <AnimatedSocialIcon href={personalInfo.linkedin} title="LinkedIn" icon={FaLinkedin} />
-                <AnimatedSocialIcon href="#" title="Discord" icon={FaDiscord} />
-                
-                <span className="hero-divider" style={{ margin: "0 0.25rem", opacity: 0.5 }}>|</span>
-                
-                <AnimatedSocialIcon 
-                  href="/Aniruddha_Resume.pdf" 
-                  title="View Resume" 
-                  icon={FaFileAlt} 
-                  className="resume-link" 
-                />
-              </div>
             </div>
+          </div>
+
+          <div className="hero-socials-minimal" style={{ marginTop: '0.75rem', marginBottom: '1.5rem', marginLeft: '-0.25rem' }}>
+            <AnimatedSocialIcon href={personalInfo.github} title="GitHub" icon={FaGithub} />
+            <AnimatedSocialIcon href={`mailto:${personalInfo.email}`} title="Email" icon={FaEnvelope} />
+            <AnimatedSocialIcon href={personalInfo.linkedin} title="LinkedIn" icon={FaLinkedin} />
+            <AnimatedSocialIcon href="#" title="Discord" icon={FaDiscord} />
+            
+            <span className="hero-divider" style={{ margin: "0 0.25rem", opacity: 0.5 }}>|</span>
+            
+            <AnimatedSocialIcon 
+              href="/Aniruddha_Resume.pdf" 
+              title="View Resume" 
+              icon={FaFileAlt} 
+              className="resume-link" 
+            />
           </div>
         </motion.div>
       </div>

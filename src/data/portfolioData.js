@@ -82,25 +82,18 @@ export const certifications = [
   {
     title: "Programming and Data Science – Foundational Level",
     issuer: "Indian Institute of Technology, Madras",
-    date: "Sep 2025",
-    credentialId: "24F2006234",
-    skills: ["Python (Programming Language)", "Data Science", "+2 skills"],
     icon: "certificate",
   },
   {
     title: "Use Machine Learning APIs on Google Cloud Skill Badge",
     issuer: "Google Cloud Skills Boost",
-    date: "Jun 2026",
     image: "/certificates/google-cloud.png",
-    skills: ["Google Cloud Platform (GCP)", "Machine Learning", "+4 skills"],
     icon: "certificate",
   },
   {
     title: "Programming in Java",
     issuer: "NPTEL",
-    date: "May 2026",
     image: "/certificates/nptellg.png",
-    skills: ["Java"],
     icon: "certificate",
   }
 ];

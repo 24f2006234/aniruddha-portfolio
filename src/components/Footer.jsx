@@ -18,7 +18,7 @@ export default function Footer() {
           <div style={{ flex: '1 1 300px' }}>
             <Link to="hero" smooth duration={800} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', marginBottom: '1.5rem', width: 'fit-content' }}>
               <img src="/aniru.png" alt="Logo" style={{ width: "40px", height: "40px", borderRadius: "12px", objectFit: "cover" }} />
-              <span style={{ fontFamily: 'var(--heading)', fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
+              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
                 {personalInfo.name}
               </span>
             </Link>

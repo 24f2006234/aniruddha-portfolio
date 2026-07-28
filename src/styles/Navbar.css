@@ -103,7 +103,7 @@
 }
 
 .navbar-logo {
-  font-family: var(--heading);
+  font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-h);
@@ -145,7 +145,7 @@
 }
 
 .navbar-links li a {
-  font-family: var(--sans);
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--text);
@@ -173,7 +173,7 @@
 }
 
 .dropdown-trigger {
-  font-family: var(--sans);
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--text);

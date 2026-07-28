@@ -46,95 +46,61 @@ const getSkillIcon = (skill) => {
 };
 
 function BentoCard({ category, items, i }) {
-  const bentoClass = category.toLowerCase().replace(/[^a-z]/g, "");
-  const bentoColor = "var(--text-primary)";
-
   return (
     <motion.div
-      className={`skill-bento-card card-${bentoClass}`}
-      style={{
-        "--bento-color": bentoColor,
-      }}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.7, delay: i * 0.08 }}
+      transition={{ duration: 0.5, delay: i * 0.05 }}
+      style={{
+        background: 'transparent',
+        border: '1px solid var(--border-light)',
+        borderRadius: '8px',
+        padding: '1.25rem',
+        display: 'flex',
+        flexDirection: 'column',
+        boxShadow: 'inset 0 0 4px rgba(0,0,0,0.02)'
+      }}
     >
-      <div className="skill-card-glass" />
-      <div className="skill-card-content">
-        <div className="skill-cat-header">
-          <h3 className="skill-cat-name">{category}</h3>
-        </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+        <h3 style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)', margin: 0 }}>{category}</h3>
+      </div>
 
-        <div className="skill-pills" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-          {items.map((skill, si) => (
-            <SkillPill key={si} skill={skill} bentoColor={bentoColor} delay={0.1 + si * 0.03} />
-          ))}
-        </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+        {items.map((skill, si) => (
+          <SkillPill key={si} skill={skill} delay={0.05 + si * 0.02} />
+        ))}
       </div>
     </motion.div>
   );
 }
 
-function SkillPill({ skill, bentoColor, delay }) {
-  const [hovered, setHovered] = useState(false);
-
+function SkillPill({ skill, delay }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
+      initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ delay }}
+      transition={{ delay, duration: 0.2 }}
       style={{
-        position: 'relative',
         display: 'inline-flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '40px',
-        padding: '16px',
-        background: 'var(--bg-surface)',
+        gap: '6px',
+        fontSize: '0.75rem',
+        padding: '0.25rem 0.6rem',
+        background: 'var(--bg-secondary)',
         border: '1px solid var(--border-light)',
-        borderRadius: '10px',
-        cursor: 'pointer',
+        borderRadius: '4px',
+        color: 'var(--text-secondary)',
+        fontWeight: 500,
         transition: 'all 0.2s ease',
-        transform: hovered ? 'scale(1.1)' : 'scale(1)',
-        backgroundColor: hovered ? 'var(--bg-secondary)' : 'var(--bg-surface)',
-        borderColor: hovered ? bentoColor : 'var(--border-light)'
+        cursor: 'default'
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      whileHover={{ y: -2, backgroundColor: 'var(--border-light)', color: 'var(--text-primary)' }}
     >
-      {getSkillIcon(skill) ? getSkillIcon(skill) : <span style={{ fontSize: '12px' }}>{skill}</span>}
-      
-      {/* Custom Tooltip */}
-      {hovered && (
-        <div style={{
-          position: 'absolute',
-          bottom: '120%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          background: 'var(--text-primary)',
-          color: 'var(--bg-primary)',
-          padding: '4px 8px',
-          borderRadius: '4px',
-          fontSize: '0.75rem',
-          fontWeight: 600,
-          whiteSpace: 'nowrap',
-          pointerEvents: 'none',
-          boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
-          zIndex: 10
-        }}>
-          {skill}
-          <div style={{
-            position: 'absolute',
-            top: '100%',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            borderWidth: '4px',
-            borderStyle: 'solid',
-            borderColor: 'var(--text-primary) transparent transparent transparent'
-          }} />
-        </div>
-      )}
+      <span style={{ fontSize: '14px', display: 'flex', alignItems: 'center' }}>
+        {getSkillIcon(skill) ? getSkillIcon(skill) : null}
+      </span>
+      {skill}
     </motion.div>
   );
 }

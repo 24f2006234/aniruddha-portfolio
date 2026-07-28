@@ -29,27 +29,30 @@ export default function Certificates() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              style={{ display: 'flex', gap: 'clamp(1rem, 3vw, 1.5rem)', alignItems: 'flex-start', padding: '0.5rem 0' }}
+              style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start', padding: '0.5rem 0' }}
             >
               <div style={{ 
-                minWidth: '50px', 
-                height: '50px', 
+                width: '48px', 
+                height: '48px', 
+                flexShrink: 0,
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
-                background: cert.image ? 'transparent' : 'var(--bg-secondary)', 
+                background: '#fff', 
                 borderRadius: '8px',
-                overflow: 'hidden'
+                border: '1px solid var(--border-light)',
+                overflow: 'hidden',
+                padding: '4px'
               }}>
                 {cert.image ? (
-                  <img src={cert.image} alt="Certificate" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={cert.image} alt="Certificate" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 ) : (
-                  <FileBadge size={28} color="var(--primary)" />
+                  <FileBadge size={24} color="var(--primary)" />
                 )}
               </div>
               <div>
-                <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', fontWeight: '700', color: 'var(--text-primary)', margin: '0 0 0.25rem 0', lineHeight: 1.2 }}>{cert.title}</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)', margin: '0 0 0.5rem 0', fontWeight: 500 }}>{cert.issuer}</p>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-primary)', margin: '0 0 0.15rem 0', lineHeight: 1.2 }}>{cert.title}</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', margin: '0 0 0.5rem 0', fontWeight: 500 }}>{cert.issuer}</p>
                 {cert.date && <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: '0 0 0.25rem 0' }}>Issued {cert.date}</p>}
                 {cert.credentialId && <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: '0 0 0.5rem 0' }}>Credential ID {cert.credentialId}</p>}
                 {cert.skills && (

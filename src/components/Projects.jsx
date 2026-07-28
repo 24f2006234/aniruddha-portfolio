@@ -49,7 +49,10 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
+              whileHover={{ y: -4, backgroundColor: 'var(--bg-secondary)', transition: { duration: 0.2 } }}
+              onClick={() => { if(project.link) window.open(project.link, '_blank'); }}
               style={{
+                cursor: 'pointer',
                 background: 'transparent',
                 border: '1px solid var(--border-light)',
                 borderRadius: '8px',
@@ -111,28 +114,34 @@ export default function Projects() {
                 </div>
 
                 <div style={{ display: 'flex', gap: '1rem', marginTop: 'auto' }}>
-                  <a 
-                    href={project.link || "#"} 
-                    target="_blank" rel="noreferrer"
-                    style={{ 
-                      display: 'flex', alignItems: 'center', gap: '0.4rem',
-                      fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: 500,
-                      textDecoration: 'none', transition: 'opacity 0.2s'
-                    }}
-                  >
-                    <FaExternalLinkAlt size={12} style={{ color: 'var(--text-muted)' }} /> Live
-                  </a>
-                  <a 
-                    href={project.link || "#"} 
-                    target="_blank" rel="noreferrer"
-                    style={{ 
-                      display: 'flex', alignItems: 'center', gap: '0.4rem',
-                      fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: 500,
-                      textDecoration: 'none', transition: 'opacity 0.2s'
-                    }}
-                  >
-                    <FaGithub size={14} style={{ color: 'var(--text-muted)' }} /> Source
-                  </a>
+                  {project.link && (
+                    <a 
+                      href={project.link} 
+                      target="_blank" rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      style={{ 
+                        display: 'flex', alignItems: 'center', gap: '0.4rem',
+                        fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: 500,
+                        textDecoration: 'none', transition: 'opacity 0.2s'
+                      }}
+                    >
+                      <FaExternalLinkAlt size={12} style={{ color: 'var(--text-muted)' }} /> Live
+                    </a>
+                  )}
+                  {project.github && (
+                    <a 
+                      href={project.github} 
+                      target="_blank" rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      style={{ 
+                        display: 'flex', alignItems: 'center', gap: '0.4rem',
+                        fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: 500,
+                        textDecoration: 'none', transition: 'opacity 0.2s'
+                      }}
+                    >
+                      <FaGithub size={14} style={{ color: 'var(--text-muted)' }} /> Source
+                    </a>
+                  )}
                 </div>
               </div>
 

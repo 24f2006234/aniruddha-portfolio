@@ -25,24 +25,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         >
-          <div className="animated-banner-bg">
-            <motion.div
-              className="banner-orb banner-orb-1"
-              animate={{ x: [0, 100, 0], y: [0, -50, 0], scale: [1, 1.2, 1] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div
-              className="banner-orb banner-orb-2"
-              animate={{ x: [0, -150, 0], y: [0, 80, 0], scale: [1, 1.5, 1] }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div
-              className="banner-orb banner-orb-3"
-              animate={{ x: [0, 50, 0], y: [0, 100, 0], scale: [1, 0.8, 1] }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            />
-            <div className="banner-grid-overlay" />
-          </div>
+          <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" alt="Hero Banner" className="hero-banner-img" />
         </motion.div>
 
         <motion.div

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FileBadge } from "lucide-react";
+import { FileBadge, ExternalLink } from "lucide-react";
 import { certifications } from "../data/portfolioData";
 import "../styles/Projects.css";
 
@@ -51,7 +51,12 @@ export default function Certificates() {
                 )}
               </div>
               <div>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-primary)', margin: '0 0 0.15rem 0', lineHeight: 1.2 }}>{cert.title}</h3>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-primary)', margin: '0 0 0.15rem 0', lineHeight: 1.2, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  {cert.title}
+                  <a href={cert.url || cert.image || '#'} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', color: 'var(--text-muted)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>
+                    <ExternalLink size={16} />
+                  </a>
+                </h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', margin: '0 0 0.5rem 0', fontWeight: 500 }}>{cert.issuer}</p>
                 {cert.date && <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: '0 0 0.25rem 0' }}>Issued {cert.date}</p>}
                 {cert.credentialId && <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: '0 0 0.5rem 0' }}>Credential ID {cert.credentialId}</p>}

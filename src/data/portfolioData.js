@@ -61,6 +61,34 @@ export const projects = [
     iconName: "Briefcase",
     image: placementPortalImg,
     link: "https://github.com/24f2006234/placement-portal_app",
+  },
+  {
+    title: "Project Alpha (Coming Soon)",
+    tech: ["React", "Node.js", "MongoDB"],
+    year: "2027",
+    description: "An upcoming project focused on scalable AI infrastructure.",
+    bullets: [
+      "Currently in active development phase.",
+      "Will feature real-time data synchronization."
+    ],
+    color: "#4ADE80",
+    iconName: "Code",
+    image: null,
+    link: "#",
+  },
+  {
+    title: "Project Beta (Coming Soon)",
+    tech: ["TypeScript", "Next.js", "Tailwind CSS"],
+    year: "2027",
+    description: "A modern web application with a focus on exceptional UI/UX design.",
+    bullets: [
+      "Designing complex interactive components.",
+      "Optimizing core web vitals for performance."
+    ],
+    color: "#60A5FA",
+    iconName: "Layout",
+    image: null,
+    link: "#",
   }
 ];
 

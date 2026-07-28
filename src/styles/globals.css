@@ -629,3 +629,14 @@ section > .container {
     transform: translateY(0);
   }
 }
+
+.ui-company-logo {
+  height: 22px;
+  object-fit: contain;
+  opacity: 0.8;
+  filter: brightness(0);
+}
+
+[data-theme="dark"] .ui-company-logo {
+  filter: brightness(0) invert(1);
+}

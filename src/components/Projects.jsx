@@ -39,7 +39,7 @@ export default function Projects() {
           <h2 className="section-title">Projects</h2>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {projects.map((project, i) => {
             const IconComponent = project.iconName ? LucideIcons[project.iconName] : LucideIcons.Folder;
             return (
@@ -49,27 +49,29 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              whileHover={{ y: -4, backgroundColor: 'var(--bg-secondary)', transition: { duration: 0.2 } }}
+              whileHover={{ backgroundColor: 'var(--bg-secondary)', transition: { duration: 0.2 } }}
               onClick={() => { if(project.link) window.open(project.link, '_blank'); }}
               style={{
                 cursor: 'pointer',
                 background: 'transparent',
-                border: '1px solid var(--border-light)',
+                border: '2px solid var(--border-light)',
                 borderRadius: '8px',
-                overflow: 'hidden',
+                padding: '8px 8px 12px 8px',
                 display: 'flex',
                 flexDirection: 'column',
-                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.02)',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.04)',
                 position: 'relative'
               }}
             >
-              {/* Image Header */}
+              {/* Thumbnail */}
               <div style={{ 
-                height: '200px', 
+                aspectRatio: '4/3',
+                width: '100%',
                 background: 'var(--bg-secondary)', 
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                borderBottom: '1px solid var(--border-light)',
-                overflow: 'hidden'
+                borderRadius: '6px',
+                overflow: 'hidden',
+                marginBottom: '1rem'
               }}>
                 {project.image ? (
                   <img 
@@ -86,65 +88,48 @@ export default function Projects() {
                 )}
               </div>
 
-              <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+              {/* Content */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', padding: '0 4px' }}>
                 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: '500', color: 'var(--text-primary)', margin: 0, letterSpacing: '-0.02em' }}>{project.title}</h3>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-primary)', margin: 0, letterSpacing: '-0.02em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {project.title}
+                  </h3>
+                  
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
+                    {project.link && (
+                      <a 
+                        href={project.link} 
+                        target="_blank" rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        style={{ color: 'var(--text-muted)', transition: 'color 0.2s' }}
+                      >
+                        <FaExternalLinkAlt size={14} />
+                      </a>
+                    )}
+                    {project.github && (
+                      <a 
+                        href={project.github} 
+                        target="_blank" rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        style={{ color: 'var(--text-muted)', transition: 'color 0.2s' }}
+                      >
+                        <FaGithub size={16} />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginTop: '0.25rem' }}>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', margin: 0 }}>
                     {project.year}
-                  </span>
+                  </p>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0, fontWeight: 500, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '60%' }}>
+                    {project.tech.slice(0, 3).join(' • ')}{project.tech.length > 3 ? ' +' : ''}
+                  </p>
                 </div>
 
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6', margin: '0 0 1.25rem 0', flexGrow: 1 }}>
-                  {project.description}
-                </p>
-
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.5rem' }}>
-                  {project.tech.map((t, ti) => (
-                    <span key={ti} style={{ 
-                      fontSize: '0.7rem', padding: '0.2rem 0.5rem', 
-                      background: 'var(--bg-secondary)', border: '1px solid var(--border-light)', 
-                      borderRadius: '4px', color: 'var(--text-secondary)',
-                      display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 500
-                    }}>
-                      {techIcons[t] && <span style={{ display: 'flex', alignItems: 'center' }}>{techIcons[t]}</span>}
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <div style={{ display: 'flex', gap: '1rem', marginTop: 'auto' }}>
-                  {project.link && (
-                    <a 
-                      href={project.link} 
-                      target="_blank" rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      style={{ 
-                        display: 'flex', alignItems: 'center', gap: '0.4rem',
-                        fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: 500,
-                        textDecoration: 'none', transition: 'opacity 0.2s'
-                      }}
-                    >
-                      <FaExternalLinkAlt size={12} style={{ color: 'var(--text-muted)' }} /> Live
-                    </a>
-                  )}
-                  {project.github && (
-                    <a 
-                      href={project.github} 
-                      target="_blank" rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      style={{ 
-                        display: 'flex', alignItems: 'center', gap: '0.4rem',
-                        fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: 500,
-                        textDecoration: 'none', transition: 'opacity 0.2s'
-                      }}
-                    >
-                      <FaGithub size={14} style={{ color: 'var(--text-muted)' }} /> Source
-                    </a>
-                  )}
-                </div>
               </div>
-
             </motion.div>
             );
           })}

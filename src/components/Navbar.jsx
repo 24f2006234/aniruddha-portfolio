@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
 import { Sun, Moon, ChevronDown } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import { personalInfo } from "../data/portfolioData";
 import "../styles/Navbar.css";
 
 const navLinks = [
@@ -28,12 +29,16 @@ export default function Navbar() {
       <nav className="navbar-clean container">
         {/* Logo - Left side */}
         <div className="navbar-logo-clean">
-          <Link to="hero" smooth duration={600} className="logo-link">
+          <Link to="hero" smooth duration={600} className="logo-link" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }}>
             <img 
-              src="/profile.jpg" 
-              alt="Aniruddha Das" 
+              src="/aniru.png" 
+              alt="Logo" 
               className="logo-img"
+              style={{ width: "36px", height: "36px", borderRadius: "10px", objectFit: "cover", border: "none" }}
             />
+            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
+              {personalInfo.name}
+            </span>
           </Link>
         </div>
 

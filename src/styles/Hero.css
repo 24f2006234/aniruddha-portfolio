@@ -4,7 +4,7 @@
   align-items: center;
   position: relative;
   background: var(--bg-primary);
-  padding: 4rem 0 2rem 0;
+  padding: 1rem 0 2rem 0;
 }
 
 .hero-banner-wrapper {
@@ -104,11 +104,11 @@
 .animated-name-text {
   font-family: var(--font-heading);
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.02em;
   fill: transparent;
   stroke: var(--text-primary);
-  stroke-width: 1.5px;
+  stroke-width: 1.2px;
   stroke-dasharray: 1200;
   stroke-dashoffset: 1200;
   animation: drawName 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -133,7 +133,7 @@
   font-family: var(--font-body);
   font-size: 1rem;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 400;
   margin: 0.25rem 0 0 0;
 }
 

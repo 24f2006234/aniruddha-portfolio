@@ -1,32 +1,25 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./styles/globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import Achievements from "./components/Achievements";
-import Certificates from "./components/Certificates";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Games from "./components/Games";
 
 export default function App() {
   return (
     <ThemeProvider>
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Achievements />
-        <Certificates />
-        <Contact />
-      </main>
-      <Footer />
+      <Router>
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/games" element={<Games />} />
+          </Routes>
+        </main>
+        <Footer />
+      </Router>
     </ThemeProvider>
   );
 }

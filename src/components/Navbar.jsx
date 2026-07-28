@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-scroll";
+import { Link, useLocation } from "react-router-dom";
 import { Sun, Moon, ChevronDown } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { personalInfo } from "../data/portfolioData";
@@ -15,6 +15,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { isDark, toggleTheme } = useTheme();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,14 +30,14 @@ export default function Navbar() {
       <nav className="navbar-clean container">
         {/* Logo - Left side */}
         <div className="navbar-logo-clean">
-          <Link to="hero" smooth duration={600} className="logo-link">
+          <a href="/#hero" className="logo-link">
             <img 
               src="/aniru.png" 
               alt="Logo" 
               className="logo-img"
               style={{ width: "40px", height: "40px", borderRadius: "10px", objectFit: "cover" }}
             />
-          </Link>
+          </a>
         </div>
 
         {/* Navigation Links + Controls - Right side */}
@@ -44,17 +45,12 @@ export default function Navbar() {
           <ul className="navbar-links-clean">
             {navLinks.map((link) => (
               <li key={link.to}>
-                <Link
-                  to={link.to}
-                  smooth
-                  duration={600}
-                  offset={-20}
-                  spy
-                  activeClass="active"
+                <a
+                  href={`/#${link.to}`}
                   className="nav-link-clean"
                 >
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
             
@@ -63,8 +59,12 @@ export default function Navbar() {
                 More <ChevronDown size={14} />
               </span>
               <ul className="dropdown-menu-clean">
-                <li><a href="#games" className="dropdown-item-clean">Games</a></li>
-                <li><a href="#entertainment" className="dropdown-item-clean">Entertainment</a></li>
+                <li>
+                  <Link to="/games" className="dropdown-item-clean" style={{ cursor: "pointer" }}>
+                    Games
+                  </Link>
+                </li>
+                <li><a href="/#entertainment" className="dropdown-item-clean">Entertainment</a></li>
               </ul>
             </li>
           </ul>

@@ -79,7 +79,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <Link to="hero" smooth duration={800} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.9rem', cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}>
+          <Link to="hero" smooth duration={800} className="back-to-top-btn">
             Back to Top <ArrowUp size={16} />
           </Link>
           

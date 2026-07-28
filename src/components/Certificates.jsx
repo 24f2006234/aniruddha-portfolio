@@ -48,8 +48,15 @@ export default function Certificates() {
                 )}
               </div>
               <div>
-                <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', fontWeight: '700', color: 'var(--text-primary)', margin: '0 0 0.5rem 0', lineHeight: 1.2 }}>{cert.title}</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)', margin: 0 }}>{cert.issuer}</p>
+                <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', fontWeight: '700', color: 'var(--text-primary)', margin: '0 0 0.25rem 0', lineHeight: 1.2 }}>{cert.title}</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)', margin: '0 0 0.5rem 0', fontWeight: 500 }}>{cert.issuer}</p>
+                {cert.date && <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: '0 0 0.25rem 0' }}>Issued {cert.date}</p>}
+                {cert.credentialId && <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: '0 0 0.5rem 0' }}>Credential ID {cert.credentialId}</p>}
+                {cert.skills && (
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: '0.5rem 0 0 0' }}>
+                    <span style={{ fontWeight: 600 }}>Skills:</span> {cert.skills.join(', ')}
+                  </p>
+                )}
               </div>
             </motion.div>
           ))}

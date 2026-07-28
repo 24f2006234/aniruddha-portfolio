@@ -44,11 +44,7 @@ export default function Hero() {
             />
             <div className="hero-profile-text">
               <h1 className="hero-profile-name" aria-label={personalInfo.name}>
-                <svg className="animated-name-svg" viewBox="0 0 500 70" preserveAspectRatio="xMinYMid meet">
-                  <text x="0" y="55" className="animated-name-text">
-                    {personalInfo.name}
-                  </text>
-                </svg>
+                {personalInfo.name}
               </h1>
               <p className="hero-profile-title">20, {personalInfo.title}, IND</p>
             </div>

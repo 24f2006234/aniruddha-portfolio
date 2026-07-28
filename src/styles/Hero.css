@@ -92,42 +92,14 @@
   display: flex;
   align-items: center;
   width: 100%;
-}
-
-.animated-name-svg {
-  width: 100%;
-  max-width: 350px;
-  height: auto;
-  overflow: visible;
-}
-
-.animated-name-text {
   font-family: var(--font-heading);
-  font-size: 3rem;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  fill: transparent;
-  stroke: var(--text-primary);
-  stroke-width: 1.2px;
-  stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
-  animation: drawName 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
 }
 
-@keyframes drawName {
-  0% {
-    stroke-dashoffset: 1200;
-    fill: transparent;
-  }
-  60% {
-    stroke-dashoffset: 0;
-    fill: transparent;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    fill: var(--text-primary);
-  }
-}
+
 
 .hero-profile-title {
   font-family: var(--font-body);

@@ -49,7 +49,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              whileHover={{ scale: 0.95, backgroundColor: 'var(--bg-secondary)', transition: { duration: 0.2 } }}
+              whileHover={{ backgroundColor: 'var(--bg-secondary)', transition: { duration: 0.2 } }}
               onClick={() => { if(project.link) window.open(project.link, '_blank'); }}
               style={{
                 cursor: 'pointer',
@@ -67,20 +67,23 @@ export default function Projects() {
               <div style={{ 
                 aspectRatio: '4/3',
                 width: '100%',
-                background: 'var(--bg-secondary)', 
+                background: 'linear-gradient(135deg, color-mix(in srgb, #1d9bf0 8%, transparent), var(--bg-secondary))', 
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 borderRadius: '6px',
                 overflow: 'hidden',
-                marginBottom: '1rem'
+                marginBottom: '1rem',
+                padding: '1.5rem'
               }}>
                 {project.image ? (
                   <img 
                     src={project.image} 
                     alt={project.title} 
                     style={{ 
-                      width: '100%', 
-                      height: '100%', 
-                      objectFit: 'cover'
+                      maxWidth: '100%', 
+                      maxHeight: '100%', 
+                      objectFit: 'contain',
+                      borderRadius: '4px',
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.1)'
                     }} 
                   />
                 ) : (

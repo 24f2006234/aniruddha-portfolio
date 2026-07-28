@@ -100,20 +100,20 @@ export default function Projects() {
               <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: '700', color: 'var(--text-primary)', margin: 0, lineHeight: 1.2 }}>{project.title}</h3>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: 'var(--text-primary)', margin: 0, lineHeight: 1.2 }}>{project.title}</h3>
                   <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600, background: 'var(--bg-secondary)', padding: '0.2rem 0.6rem', borderRadius: '50px' }}>
                     {project.year}
                   </span>
                 </div>
 
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', margin: '0 0 1.5rem 0', flexGrow: 1 }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: '1.6', margin: '0 0 1.5rem 0', flexGrow: 1 }}>
                   {project.description}
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem' }}>
                   {project.tech.map((t, ti) => (
                     <span key={ti} style={{ 
-                      fontSize: '0.75rem', padding: '0.3rem 0.75rem', 
+                      fontSize: '0.7rem', padding: '0.25rem 0.6rem', 
                       background: 'transparent', border: '1px solid var(--border-light)', 
                       borderRadius: '50px', color: 'var(--text-secondary)',
                       display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600

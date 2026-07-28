@@ -121,10 +121,10 @@ export default function Experience() {
                     <div style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
                       Independent & Academic Projects
                     </div>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem', maxWidth: '800px' }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem', width: '100%' }}>
                       I specialize in building systems that go past the model. I focus on architecting real-time data pipelines, deploying scalable ML services, and crafting the full-stack layers that make intelligent systems accessible and usable.
                     </p>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.8', margin: 0, maxWidth: '800px' }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.8', margin: 0, width: '100%' }}>
                       My recent work spans across developing live aviation telemetry applications, engineering ML-driven candidate matching systems, and deploying applied Machine Learning solutions on Google Cloud Platform.
                     </p>
                   </div>

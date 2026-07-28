@@ -17,7 +17,7 @@ export default function About() {
           <h2 className="section-title">About</h2>
         </motion.div>
 
-        <div style={{ maxWidth: '800px' }}>
+        <div style={{ width: '100%' }}>
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}

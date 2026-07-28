@@ -21,7 +21,7 @@ export default function Achievements() {
           <h2 className="section-title">My Achievements</h2>
         </motion.div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1.5rem, 5vw, 2.5rem)', maxWidth: '800px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1.5rem, 5vw, 2.5rem)', width: '100%' }}>
           {achievements.map((cert, i) => (
             <motion.div
               key={i}

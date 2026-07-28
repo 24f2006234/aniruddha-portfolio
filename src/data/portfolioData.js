@@ -1,5 +1,6 @@
 import aeroGridImg from "../assets/AeroGrid_Analytics.png";
 import placementPortalImg from "../assets/placement-portal_app.png";
+import iitmLogo from "../assets/iitm.png";
 
 export const personalInfo = {
   name: "Aniruddha Das",
@@ -82,6 +83,7 @@ export const certifications = [
   {
     title: "Programming and Data Science – Foundational Level",
     issuer: "Indian Institute of Technology, Madras",
+    image: iitmLogo,
     icon: "certificate",
   },
   {
@@ -94,6 +96,12 @@ export const certifications = [
     title: "Programming in Java",
     issuer: "NPTEL",
     image: "/certificates/nptellg.png",
+    icon: "certificate",
+  },
+  {
+    title: "SQL (Intermediate)",
+    issuer: "HackerRank",
+    image: "/certificates/hackerrank.svg",
     icon: "certificate",
   }
 ];

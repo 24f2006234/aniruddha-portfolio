@@ -2,7 +2,26 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import * as LucideIcons from "lucide-react";
+import { Sparkles, Video } from "lucide-react";
+import { 
+  SiReact, SiWebgl, SiVite, SiPython, SiFlask, SiCplusplus,
+  SiScikitlearn, SiPytorch, SiOpencv
+} from "react-icons/si";
 import { projects } from "../data/portfolioData";
+
+const techIcons = {
+  "React": <SiReact color="#61DAFB" />,
+  "WebGL": <SiWebgl color="#990000" />,
+  "Vite": <SiVite color="#646CFF" />,
+  "Python": <SiPython color="#3776AB" />,
+  "Flask": <SiFlask color="var(--text-primary)" />,
+  "C++": <SiCplusplus color="#00599C" />,
+  "Scikit-Learn": <SiScikitlearn color="#F7931E" />,
+  "Gemini API": <Sparkles color="#8E24AA" size={14} />,
+  "PyTorch": <SiPytorch color="#EE4C2C" />,
+  "OpenCV": <SiOpencv color="#5C3EE8" />,
+  "MediaPipe": <Video color="#009688" size={14} />
+};
 
 export default function Projects() {
   return (
@@ -43,29 +62,28 @@ export default function Projects() {
               {/* Image Header Placeholder / Gradient */}
               <div style={{ 
                 height: '240px', 
-                background: project.image 
-                  ? `linear-gradient(to bottom, rgba(0,0,0,0) 0%, var(--bg-surface) 100%), url(${project.image}) center/cover`
-                  : 'var(--bg-surface)', 
+                background: 'var(--bg-surface)', 
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 borderBottom: '1px solid var(--border-light)',
-                padding: project.image ? '0' : '2rem',
+                padding: '0',
                 position: 'relative',
                 overflow: 'hidden'
               }}>
-                {!project.image && <div className="sleek-gradient" />}
+                <div className="sleek-gradient" />
                 {project.image ? (
                   <img 
                     src={project.image} 
                     alt={project.title} 
                     style={{ 
-                      width: '100%', 
-                      height: '100%', 
-                      objectFit: 'cover',
-                      opacity: 0.9
+                      width: '85%', 
+                      height: '85%', 
+                      objectFit: 'contain',
+                      zIndex: 1,
+                      filter: 'drop-shadow(0 12px 24px rgba(0,0,0,0.15))'
                     }} 
                   />
                 ) : (
-                  <IconComponent size={64} color={project.color || 'var(--text-primary)'} style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))' }} />
+                  <IconComponent size={64} color={project.color || 'var(--text-primary)'} style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))', zIndex: 1 }} />
                 )}
               </div>
 
@@ -80,13 +98,15 @@ export default function Projects() {
                   {project.description}
                 </p>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '1.5rem' }}>
                   {project.tech.map((t, ti) => (
                     <span key={ti} style={{ 
-                      fontSize: '0.75rem', padding: '0.25rem 0.6rem', 
+                      fontSize: '0.8rem', padding: '0.35rem 0.75rem', 
                       background: 'var(--bg-secondary)', border: '1px solid var(--border-light)', 
-                      borderRadius: '4px', color: 'var(--text-secondary)' 
+                      borderRadius: '50px', color: 'var(--text-secondary)',
+                      display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 500
                     }}>
+                      {techIcons[t] && <span style={{ display: 'flex', alignItems: 'center' }}>{techIcons[t]}</span>}
                       {t}
                     </span>
                   ))}

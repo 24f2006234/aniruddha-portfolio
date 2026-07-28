@@ -39,7 +39,7 @@ export default function Projects() {
           <h2 className="section-title">Projects</h2>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
           {projects.map((project, i) => {
             const IconComponent = project.iconName ? LucideIcons[project.iconName] : LucideIcons.Folder;
             return (
@@ -49,37 +49,41 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
+              whileHover={{ y: -8, boxShadow: 'var(--shadow-md)' }}
               style={{
                 background: 'var(--bg-surface)',
                 border: '1px solid var(--border-light)',
-                borderRadius: '16px',
+                borderRadius: '24px',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                boxShadow: 'var(--shadow-sm)',
+                transition: 'all 0.3s ease',
               }}
+              className="project-card-sleek"
             >
               {/* Image Header Placeholder / Gradient */}
               <div style={{ 
-                height: '240px', 
-                background: 'var(--bg-surface)', 
+                height: '220px', 
+                background: 'var(--bg-secondary)', 
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                borderBottom: '1px solid var(--border-light)',
-                padding: '0',
                 position: 'relative',
                 overflow: 'hidden'
-              }}>
-                <div className="sleek-gradient" />
+              }}
+              className="project-img-wrapper"
+              >
+                <div className="sleek-gradient" style={{ opacity: 0.3 }} />
                 {project.image ? (
-                  <img 
+                  <motion.img 
                     src={project.image} 
                     alt={project.title} 
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.4 }}
                     style={{ 
-                      width: '85%', 
-                      height: '85%', 
-                      objectFit: 'contain',
+                      width: '100%', 
+                      height: '100%', 
+                      objectFit: 'cover',
                       zIndex: 1,
-                      filter: 'drop-shadow(0 12px 24px rgba(0,0,0,0.15))'
                     }} 
                   />
                 ) : (
@@ -87,60 +91,40 @@ export default function Projects() {
                 )}
               </div>
 
-              <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+              <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                  <h3 style={{ fontSize: '1.3rem', fontWeight: '700', color: 'var(--text-primary)', margin: 0 }}>{project.title}</h3>
-                  <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>{project.year}</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '1rem' }}>
+                  <div>
+                    <h3 style={{ fontSize: '1.4rem', fontWeight: '700', color: 'var(--text-primary)', margin: '0 0 0.25rem 0', lineHeight: 1.2 }}>{project.title}</h3>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>{project.year}</span>
+                  </div>
+                  
+                  <div style={{ display: 'flex', gap: '0.75rem' }}>
+                    <a href={project.link || "#"} target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)', opacity: 0.7, transition: 'opacity 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.opacity = 1} onMouseLeave={(e) => e.currentTarget.style.opacity = 0.7}>
+                      <FaGithub size={20} />
+                    </a>
+                    <a href={project.link || "#"} target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)', opacity: 0.7, transition: 'opacity 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.opacity = 1} onMouseLeave={(e) => e.currentTarget.style.opacity = 0.7}>
+                      <FaExternalLinkAlt size={18} />
+                    </a>
+                  </div>
                 </div>
 
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.5', margin: '0 0 1.5rem 0', flexGrow: 1 }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', margin: '0 0 2rem 0', flexGrow: 1 }}>
                   {project.description}
                 </p>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '1.5rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                   {project.tech.map((t, ti) => (
                     <span key={ti} style={{ 
-                      fontSize: '0.8rem', padding: '0.35rem 0.75rem', 
-                      background: 'var(--bg-secondary)', border: '1px solid var(--border-light)', 
-                      borderRadius: '50px', color: 'var(--text-secondary)',
-                      display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 500
+                      fontSize: '0.75rem', padding: '0.4rem 0.8rem', 
+                      background: 'var(--bg-primary)', border: '1px solid var(--border-light)', 
+                      borderRadius: '8px', color: 'var(--text-primary)',
+                      display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600
                     }}>
                       {techIcons[t] && <span style={{ display: 'flex', alignItems: 'center' }}>{techIcons[t]}</span>}
                       {t}
                     </span>
                   ))}
-                </div>
-
-                <div style={{ borderTop: '1px solid var(--border-light)', display: 'grid', gridTemplateColumns: '1fr 1fr', marginTop: 'auto' }}>
-                  <a 
-                    href={project.link || "#"} 
-                    target="_blank" rel="noreferrer"
-                    style={{ 
-                      padding: '1rem', textAlign: 'center', borderRight: '1px solid var(--border-light)',
-                      color: 'var(--text-primary)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
-                      transition: 'background 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg-secondary)'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
-                  >
-                    Live link <FaExternalLinkAlt size={12} />
-                  </a>
-                  <a 
-                    href={project.link || "#"} 
-                    target="_blank" rel="noreferrer"
-                    style={{ 
-                      padding: '1rem', textAlign: 'center', 
-                      color: 'var(--text-primary)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
-                      transition: 'background 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg-secondary)'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
-                  >
-                    GitHub <FaGithub size={14} />
-                  </a>
                 </div>
               </div>
 

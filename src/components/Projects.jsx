@@ -45,78 +45,64 @@ export default function Projects() {
             return (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
               style={{
-                background: 'var(--bg-surface)',
+                background: 'transparent',
                 border: '1px solid var(--border-light)',
-                borderRadius: '20px',
+                borderRadius: '8px',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.04)',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.02)',
                 position: 'relative'
               }}
             >
-              {/* Image Header with Custom Background */}
+              {/* Image Header */}
               <div style={{ 
-                height: '220px', 
-                background: `linear-gradient(135deg, ${project.color || 'var(--clr-blue)'}22, var(--bg-surface))`, 
+                height: '200px', 
+                background: 'var(--bg-secondary)', 
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 borderBottom: '1px solid var(--border-light)',
-                padding: '1.5rem',
-                position: 'relative',
                 overflow: 'hidden'
               }}>
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  backgroundImage: 'radial-gradient(var(--border-light) 1px, transparent 1px)',
-                  backgroundSize: '20px 20px',
-                  opacity: 0.5
-                }} />
                 {project.image ? (
-                  <motion.img 
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
+                  <img 
                     src={project.image} 
                     alt={project.title} 
                     style={{ 
                       width: '100%', 
                       height: '100%', 
-                      objectFit: 'contain',
-                      zIndex: 1,
-                      filter: 'drop-shadow(0 16px 24px rgba(0,0,0,0.15))'
+                      objectFit: 'cover'
                     }} 
                   />
                 ) : (
-                  <IconComponent size={64} color={project.color || 'var(--text-primary)'} style={{ zIndex: 1 }} />
+                  <IconComponent size={48} color={'var(--text-muted)'} />
                 )}
               </div>
 
-              <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+              <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: 'var(--text-primary)', margin: 0, lineHeight: 1.2 }}>{project.title}</h3>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600, background: 'var(--bg-secondary)', padding: '0.2rem 0.6rem', borderRadius: '50px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: '500', color: 'var(--text-primary)', margin: 0, letterSpacing: '-0.02em' }}>{project.title}</h3>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 500 }}>
                     {project.year}
                   </span>
                 </div>
 
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: '1.6', margin: '0 0 1.5rem 0', flexGrow: 1 }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6', margin: '0 0 1.25rem 0', flexGrow: 1 }}>
                   {project.description}
                 </p>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.5rem' }}>
                   {project.tech.map((t, ti) => (
                     <span key={ti} style={{ 
-                      fontSize: '0.7rem', padding: '0.25rem 0.6rem', 
-                      background: 'transparent', border: '1px solid var(--border-light)', 
-                      borderRadius: '50px', color: 'var(--text-secondary)',
-                      display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600
+                      fontSize: '0.7rem', padding: '0.2rem 0.5rem', 
+                      background: 'var(--bg-secondary)', border: '1px solid var(--border-light)', 
+                      borderRadius: '4px', color: 'var(--text-secondary)',
+                      display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 500
                     }}>
                       {techIcons[t] && <span style={{ display: 'flex', alignItems: 'center' }}>{techIcons[t]}</span>}
                       {t}
@@ -128,18 +114,24 @@ export default function Projects() {
                   <a 
                     href={project.link || "#"} 
                     target="_blank" rel="noreferrer"
-                    className="btn-primary"
-                    style={{ flex: 1, width: 'auto', padding: '0.6rem', fontSize: '0.85rem' }}
+                    style={{ 
+                      display: 'flex', alignItems: 'center', gap: '0.4rem',
+                      fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: 500,
+                      textDecoration: 'none', transition: 'opacity 0.2s'
+                    }}
                   >
-                    View Live <FaExternalLinkAlt size={12} />
+                    <FaExternalLinkAlt size={12} style={{ color: 'var(--text-muted)' }} /> Live
                   </a>
                   <a 
                     href={project.link || "#"} 
                     target="_blank" rel="noreferrer"
-                    className="btn-outline"
-                    style={{ flex: 1, width: 'auto', padding: '0.6rem', fontSize: '0.85rem' }}
+                    style={{ 
+                      display: 'flex', alignItems: 'center', gap: '0.4rem',
+                      fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: 500,
+                      textDecoration: 'none', transition: 'opacity 0.2s'
+                    }}
                   >
-                    Source <FaGithub size={14} />
+                    <FaGithub size={14} style={{ color: 'var(--text-muted)' }} /> Source
                   </a>
                 </div>
               </div>

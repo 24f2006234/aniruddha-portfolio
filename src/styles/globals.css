@@ -314,7 +314,8 @@ a {
 .section-title {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 600;
+  font-weight: 400;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
   margin-bottom: 1rem;
 }

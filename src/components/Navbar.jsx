@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, ChevronDown } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import "../styles/Navbar.css";
@@ -74,6 +74,15 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
+              <li className="navbar-dropdown">
+                <span className="dropdown-trigger">
+                  More <ChevronDown size={14} />
+                </span>
+                <ul className="dropdown-menu">
+                  <li><a href="#games">Games</a></li>
+                  <li><a href="#entertainment">Entertainment</a></li>
+                </ul>
+              </li>
             </ul>
           </div>
 
@@ -128,6 +137,8 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <a href="#games" onClick={() => setMenuOpen(false)}>Games</a>
+          <a href="#entertainment" onClick={() => setMenuOpen(false)}>Entertainment</a>
           <a
             href="/resume.pdf"
             download="resume.pdf"

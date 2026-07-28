@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { FileBadge } from "lucide-react";
 import { certifications } from "../data/portfolioData";
 import "../styles/Projects.css";
 
@@ -15,7 +16,7 @@ export default function Certificates() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.7 }}
-          style={{ textAlign: 'left', marginBottom: '3rem' }}
+          style={{ textAlign: 'left', marginBottom: '2rem' }}
         >
           <h2 className="section-title">My Certificates</h2>
         </motion.div>
@@ -28,10 +29,23 @@ export default function Certificates() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              style={{ display: 'flex', gap: 'clamp(1rem, 3vw, 1.5rem)', alignItems: 'flex-start' }}
+              style={{ display: 'flex', gap: 'clamp(1rem, 3vw, 1.5rem)', alignItems: 'flex-start', background: 'var(--bg-surface)', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border-light)' }}
             >
-              <div style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', fontWeight: '800', color: 'var(--text-muted)', minWidth: '30px', lineHeight: 1 }}>
-                {(i + 1).toString().padStart(2, '0')}.
+              <div style={{ 
+                minWidth: '50px', 
+                height: '50px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                background: cert.image ? 'transparent' : 'var(--bg-secondary)', 
+                borderRadius: '8px',
+                overflow: 'hidden'
+              }}>
+                {cert.image ? (
+                  <img src={cert.image} alt="Certificate" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ) : (
+                  <FileBadge size={28} color="var(--primary)" />
+                )}
               </div>
               <div>
                 <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', fontWeight: '700', color: 'var(--text-primary)', margin: '0 0 0.5rem 0', lineHeight: 1.2 }}>{cert.title}</h3>

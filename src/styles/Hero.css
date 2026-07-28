@@ -12,7 +12,7 @@
   height: 250px;
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   position: relative;
   background: var(--bg-secondary);
@@ -61,7 +61,7 @@
 
 .hero-profile-name {
   font-family: var(--heading);
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
@@ -70,7 +70,7 @@
 }
 
 .hero-profile-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
   margin: 0.5rem 0 0 0;
 }
@@ -136,7 +136,7 @@
   }
 
   .hero-profile-name {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 
   .hero-profile-bottom {

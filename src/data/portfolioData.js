@@ -42,7 +42,7 @@ export const projects = [
       "Spatial feature engineering and real-time WebGL rendering under frequent data updates.",
     ],
     color: "#FF6B6B",
-    icon: "✈️",
+    iconName: "Plane",
     image: aeroGridImg,
     link: "https://github.com/24f2006234/AeroGrid_Analytics",
   },
@@ -57,7 +57,7 @@ export const projects = [
       "Auto-generated candidate insights and interview questions from unstructured PDF resumes.",
     ],
     color: "#C084FC",
-    icon: "💼",
+    iconName: "Briefcase",
     image: placementPortalImg,
     link: "https://github.com/24f2006234/placement-portal_app",
   }

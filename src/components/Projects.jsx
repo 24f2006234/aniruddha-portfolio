@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import * as LucideIcons from "lucide-react";
 import { projects } from "../data/portfolioData";
 
 export default function Projects() {
@@ -14,13 +15,15 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.7 }}
-          style={{ textAlign: 'left', marginBottom: '3rem' }}
+          style={{ textAlign: 'left', marginBottom: '2rem' }}
         >
           <h2 className="section-title">Projects</h2>
         </motion.div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem' }}>
-          {projects.map((project, i) => (
+          {projects.map((project, i) => {
+            const IconComponent = project.iconName ? LucideIcons[project.iconName] : LucideIcons.Folder;
+            return (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 40 }}
@@ -40,10 +43,13 @@ export default function Projects() {
               {/* Image Header Placeholder / Gradient */}
               <div style={{ 
                 height: '240px', 
-                background: project.image ? `linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-surface) 100%)` : `linear-gradient(135deg, ${project.color || 'var(--primary)'}22, var(--bg-secondary))`, 
+                background: project.image 
+                  ? `linear-gradient(to bottom, rgba(0,0,0,0) 0%, var(--bg-surface) 100%), url(${project.image}) center/cover`
+                  : `linear-gradient(135deg, ${project.color || 'var(--primary)'}33 0%, var(--bg-surface) 100%)`, 
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 borderBottom: '1px solid var(--border-light)',
-                padding: project.image ? '1.5rem' : '0'
+                padding: project.image ? '0' : '2rem',
+                position: 'relative'
               }}>
                 {project.image ? (
                   <img 
@@ -52,13 +58,12 @@ export default function Projects() {
                     style={{ 
                       width: '100%', 
                       height: '100%', 
-                      objectFit: 'contain',
-                      borderRadius: '8px',
-                      filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.15))'
+                      objectFit: 'cover',
+                      opacity: 0.9
                     }} 
                   />
                 ) : (
-                  <span style={{ fontSize: '4rem', filter: 'grayscale(0.5) opacity(0.8)' }}>{project.icon}</span>
+                  <IconComponent size={64} color={project.color || 'var(--text-primary)'} style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))' }} />
                 )}
               </div>
 
@@ -118,7 +123,8 @@ export default function Projects() {
               </div>
 
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -149,7 +149,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.7 }}
-          style={{ textAlign: 'left', marginBottom: '3rem' }}
+          style={{ textAlign: 'left', marginBottom: '2rem' }}
         >
           <h2 className="section-title">My Technical Skills</h2>
         </motion.div>

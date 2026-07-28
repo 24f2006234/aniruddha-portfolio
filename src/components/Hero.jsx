@@ -58,10 +58,7 @@ export default function Hero() {
                   title="View Resume" 
                   icon={FaFileAlt} 
                   className="resume-link" 
-                  style={{ gap: '6px', fontSize: '0.9rem', fontWeight: 500 }}
-                >
-                  <span>Resume</span>
-                </AnimatedSocialIcon>
+                />
               </div>
             </div>
           </div>
@@ -71,32 +68,49 @@ export default function Hero() {
   );
 }
 
-function AnimatedSocialIcon({ href, title, icon: Icon, className, style, children }) {
+function AnimatedSocialIcon({ href, title, icon: Icon, className, style }) {
+  const [hovered, setHovered] = useState(false);
+
   return (
     <motion.a 
       href={href}
       target="_blank"
       rel="noreferrer"
-      whileHover={{ y: -2, backgroundColor: "var(--bg-secondary)" }}
-      whileTap={{ scale: 0.9, backgroundColor: "var(--border-light)" }}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      whileTap={{ scale: 0.95 }}
       className={className}
       style={{ 
         display: 'flex', 
         alignItems: 'center', 
-        gap: '8px', 
-        padding: '0.4rem 0.8rem', 
-        borderRadius: '8px', 
-        color: 'var(--text-secondary)',
+        padding: '0.4rem',
+        borderRadius: '50px', 
+        color: hovered ? 'var(--text-h)' : 'var(--text-secondary)',
+        backgroundColor: hovered ? "var(--bg-secondary)" : "transparent",
         textDecoration: 'none',
         fontSize: '0.9rem',
         fontWeight: '500',
-        transition: 'color 0.2s ease',
+        transition: 'background-color 0.3s ease, color 0.3s ease',
+        overflow: 'hidden',
         ...style 
       }}
     >
-      <Icon size={16} />
-      <span>{title}</span>
-      {children}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', flexShrink: 0 }}>
+        <Icon size={16} />
+      </div>
+      <AnimatePresence>
+        {hovered && (
+          <motion.span
+            initial={{ width: 0, opacity: 0, marginLeft: 0 }}
+            animate={{ width: 'auto', opacity: 1, marginLeft: 6 }}
+            exit={{ width: 0, opacity: 0, marginLeft: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            style={{ whiteSpace: 'nowrap', paddingRight: '8px' }}
+          >
+            {title}
+          </motion.span>
+        )}
+      </AnimatePresence>
     </motion.a>
   );
 }

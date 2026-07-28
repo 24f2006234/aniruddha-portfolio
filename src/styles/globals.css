@@ -191,6 +191,34 @@ body {
   animation: skeleton-shimmer 1.4s infinite linear;
 }
 
+/* ── Sleek Gradient Utility ── */
+.sleek-gradient {
+  background: linear-gradient(135deg, 
+    var(--bg-surface) 0%, 
+    var(--clr-blue) 40%, 
+    var(--clr-purple) 80%,
+    var(--bg-surface) 100%
+  );
+  opacity: 0.15;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .sleek-gradient {
+  opacity: 0.1;
+  background: linear-gradient(135deg, 
+    rgba(255,255,255,0.05) 0%, 
+    var(--clr-blue) 40%, 
+    var(--clr-purple) 80%,
+    rgba(255,255,255,0.05) 100%
+  );
+}
+
 /* ── Section Fade-In Utility ── */
 @keyframes section-fade-in {
   from {

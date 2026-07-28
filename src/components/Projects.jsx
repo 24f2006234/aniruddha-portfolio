@@ -45,12 +45,14 @@ export default function Projects() {
                 height: '240px', 
                 background: project.image 
                   ? `linear-gradient(to bottom, rgba(0,0,0,0) 0%, var(--bg-surface) 100%), url(${project.image}) center/cover`
-                  : `linear-gradient(135deg, ${project.color || 'var(--primary)'}33 0%, var(--bg-surface) 100%)`, 
+                  : 'var(--bg-surface)', 
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 borderBottom: '1px solid var(--border-light)',
                 padding: project.image ? '0' : '2rem',
-                position: 'relative'
+                position: 'relative',
+                overflow: 'hidden'
               }}>
+                {!project.image && <div className="sleek-gradient" />}
                 {project.image ? (
                   <img 
                     src={project.image} 

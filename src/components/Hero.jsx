@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { personalInfo } from "../data/portfolioData";
 import { Copy, Check } from "lucide-react";
-import { FaGithub, FaLinkedin, FaDiscord, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaDiscord, FaEnvelope, FaFileAlt } from "react-icons/fa";
+import heroBanner from "../assets/hero.png";
 import "../styles/Hero.css";
 
 export default function Hero() {
@@ -17,11 +18,21 @@ export default function Hero() {
   return (
     <section className="hero" id="hero">
       <div className="container">
+        {/* Banner Section */}
+        <motion.div 
+          className="hero-banner-wrapper"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+        >
+          <img src={heroBanner} alt="Hero Banner" className="hero-banner-img" />
+        </motion.div>
+
         <motion.div
           className="hero-profile-container"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
         >
           {/* Top Row: Image + Text */}
           <div className="hero-profile-top">
@@ -57,6 +68,11 @@ export default function Hero() {
               </a>
               <a href="#" target="_blank" rel="noreferrer" title="Discord">
                 <FaDiscord size={18} />
+              </a>
+              <span className="hero-divider" style={{ margin: "0 0.25rem", opacity: 0.5 }}>|</span>
+              <a href="/Aniruddha_Resume.pdf" target="_blank" rel="noreferrer" title="View Resume" className="resume-link" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.9rem', fontWeight: 500 }}>
+                <FaFileAlt size={18} />
+                <span>Resume</span>
               </a>
             </div>
           </div>

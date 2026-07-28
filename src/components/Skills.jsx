@@ -63,9 +63,6 @@ function BentoCard({ category, items, i }) {
       <div className="skill-card-glass" />
       <div className="skill-card-content">
         <div className="skill-cat-header">
-          <div className="skill-cat-icon">
-            {categoryIcons[category] || "💡"}
-          </div>
           <h3 className="skill-cat-name">{category}</h3>
         </div>
 
@@ -92,8 +89,8 @@ function SkillPill({ skill, bentoColor, delay }) {
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: '28px',
-        padding: '12px',
+        fontSize: '40px',
+        padding: '16px',
         background: 'var(--bg-surface)',
         border: '1px solid var(--border-light)',
         borderRadius: '10px',

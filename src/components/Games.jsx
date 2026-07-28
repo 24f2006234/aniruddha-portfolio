@@ -13,7 +13,6 @@ export default function Games() {
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
         >
-          <div className="section-label">Gaming</div>
           <h2 className="section-title">Games I like</h2>
           <p className="games-subtitle">
             A collection of titles with phenomenal storytelling, mechanics, and art direction that I've enjoyed playing.

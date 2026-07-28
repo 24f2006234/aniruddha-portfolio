@@ -23,27 +23,14 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
+            style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.8' }}
           >
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <span style={{ color: 'var(--text-primary)', marginTop: '2px', fontSize: '1rem' }}>•</span>
-                <div style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                  <strong style={{ color: 'var(--text-primary)' }}>Dual-Degree Student:</strong> Data Science at IIT Madras & CSE at Adamas University.
-                </div>
-              </li>
-              <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <span style={{ color: 'var(--text-primary)', marginTop: '2px', fontSize: '1rem' }}>•</span>
-                <div style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                  <strong style={{ color: 'var(--text-primary)' }}>Core Focus:</strong> Architecting real-time data pipelines, scalable ML services, and full-stack layers.
-                </div>
-              </li>
-              <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <span style={{ color: 'var(--text-primary)', marginTop: '2px', fontSize: '1rem' }}>•</span>
-                <div style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                  <strong style={{ color: 'var(--text-primary)' }}>Recent Work:</strong> Live aviation telemetry, ML candidate matching, and applied ML on Google Cloud.
-                </div>
-              </li>
-            </ul>
+            <p style={{ marginBottom: '1.5rem' }}>
+              I am a 19-year-old <span style={{ textDecoration: 'underline', textUnderlineOffset: '4px', color: 'var(--text-primary)', fontWeight: '600' }}>Data Scientist</span> and <span style={{ textDecoration: 'underline', textUnderlineOffset: '4px', color: 'var(--text-primary)', fontWeight: '600' }}>Full-Stack Developer</span> driven by building intelligent, data-driven systems. Through my dual degree in Data Science and Computer Science Engineering, I've built a strong foundation in algorithmic complexity, statistics, and system architecture.
+            </p>
+            <p>
+              I specialize in developing <span style={{ textDecoration: 'underline', textUnderlineOffset: '4px', color: 'var(--text-primary)', fontWeight: '600' }}>predictive intelligence layers</span> and applying machine learning to real-world problems, translating complex data into scalable solutions. My full-stack background lets me carry that work end-to-end, from model to deployed application.
+            </p>
           </motion.div>
         </div>
       </div>

@@ -49,7 +49,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              whileHover={{ backgroundColor: 'var(--bg-secondary)', transition: { duration: 0.2 } }}
+              whileHover={{ scale: 0.95, backgroundColor: 'var(--bg-secondary)', transition: { duration: 0.2 } }}
               onClick={() => { if(project.link) window.open(project.link, '_blank'); }}
               style={{
                 cursor: 'pointer',

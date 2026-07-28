@@ -64,16 +64,7 @@ export default function Projects() {
               }}
             >
               {/* Thumbnail */}
-              <div style={{ 
-                aspectRatio: '4/3',
-                width: '100%',
-                background: 'linear-gradient(135deg, color-mix(in srgb, #1d9bf0 8%, transparent), var(--bg-secondary))', 
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                borderRadius: '6px',
-                overflow: 'hidden',
-                marginBottom: '1rem',
-                padding: '1.5rem'
-              }}>
+              <div className="project-image-container">
                 {project.image ? (
                   <img 
                     src={project.image} 
@@ -87,7 +78,7 @@ export default function Projects() {
                     }} 
                   />
                 ) : (
-                  <IconComponent size={48} color={'var(--text-muted)'} />
+                  <IconComponent size={48} color={'#94a3b8'} />
                 )}
               </div>
 

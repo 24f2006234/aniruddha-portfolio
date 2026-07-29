@@ -32,7 +32,16 @@ export default function SpotifyNowPlaying() {
   }
 
   if (data.error || (data.data && data.data.error)) {
-    return null; // Fail silently or show an error state if preferred
+    return (
+      <div className="spotify-widget-clean" style={{ padding: '1rem', background: 'var(--bg-secondary)', borderRadius: '12px', border: '1px solid var(--border-light)' }}>
+        <p style={{ color: 'var(--clr-red)', fontSize: '0.9rem', margin: 0 }}>
+          Spotify Error: {data.error || data.data?.error || "Unknown Error"}
+        </p>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', marginTop: '0.5rem' }}>
+          Make sure you are running with `vercel dev` and your .env variables are set!
+        </p>
+      </div>
+    );
   }
 
   const { isPlaying, title, artist, albumImageUrl, songUrl } = data.data;

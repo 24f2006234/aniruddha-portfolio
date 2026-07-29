@@ -165,18 +165,20 @@
 .navbar-resume-clean {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-on-primary);
+  background: var(--text-primary);
   text-decoration: none;
-  padding: 0.25rem 0.75rem;
-  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
   transition: all 0.2s ease;
-  border: 1px solid var(--border-light);
   margin-right: 0.5rem;
 }
 
 .navbar-resume-clean:hover {
-  color: var(--text-primary);
-  background: var(--bg-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  background: var(--primary-hover);
+  color: var(--text-on-primary-hover);
 }
 
 @media (max-width: 480px) {

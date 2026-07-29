@@ -60,11 +60,10 @@ export default function Navbar() {
               </span>
               <ul className="dropdown-menu-clean">
                 <li>
-                  <Link to="/games" className="dropdown-item-clean" style={{ cursor: "pointer" }}>
-                    Games
+                  <Link to="/interests" className="dropdown-item-clean" style={{ cursor: "pointer" }}>
+                    Interests
                   </Link>
                 </li>
-                <li><a href="/#entertainment" className="dropdown-item-clean">Entertainment</a></li>
               </ul>
             </li>
           </ul>

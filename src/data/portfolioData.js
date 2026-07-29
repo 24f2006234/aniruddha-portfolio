@@ -1,5 +1,6 @@
 import aeroGridImg from "../assets/AeroGrid_Analytics.png";
 import placementPortalImg from "../assets/placement-portal_app.png";
+import surplusGridImg from "../assets/surplusgrid.png";
 import iitmLogo from "../assets/iitm.png";
 
 export const personalInfo = {
@@ -63,17 +64,17 @@ export const projects = [
     link: "https://github.com/24f2006234/placement-portal_app",
   },
   {
-    title: "Project Alpha (Coming Soon)",
-    tech: ["React", "Node.js", "MongoDB"],
-    year: "2027",
-    description: "An upcoming project focused on scalable AI infrastructure.",
+    title: "Surplus Grid",
+    tech: ["React", "Node.js", "Express"],
+    year: "2026",
+    description: "A platform focused on optimizing energy surplus distribution and grid management.",
     bullets: [
-      "Currently in active development phase.",
-      "Will feature real-time data synchronization."
+      "Built a scalable backend to handle real-time energy metrics.",
+      "Developed an interactive dashboard for visualizing grid health."
     ],
     color: "#4ADE80",
-    iconName: "Code",
-    image: null,
+    iconName: "Zap",
+    image: surplusGridImg,
     link: "#",
   },
   {

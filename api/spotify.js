@@ -7,9 +7,9 @@ const NOW_PLAYING_ENDPOINT = "https://api.spotify.com/v1/me/player/currently-pla
 const RECENTLY_PLAYED_ENDPOINT = "https://api.spotify.com/v1/me/player/recently-played?limit=1";
 
 export default async function handler(req) {
-  const clientId = process.env.SPOTIFY_CLIENT_ID;
-  const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-  const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
+  const clientId = (process.env.SPOTIFY_CLIENT_ID || '').trim();
+  const clientSecret = (process.env.SPOTIFY_CLIENT_SECRET || '').trim();
+  const refreshToken = (process.env.SPOTIFY_REFRESH_TOKEN || '').trim();
 
   if (!clientId || !clientSecret || !refreshToken) {
     return new Response(JSON.stringify({ error: "Missing Spotify credentials" }), {
@@ -31,7 +31,7 @@ export default async function handler(req) {
       body: new URLSearchParams({
         grant_type: "refresh_token",
         refresh_token: refreshToken,
-      }),
+      }).toString(),
     });
 
     if (!tokenResponse.ok) {

@@ -9,20 +9,6 @@ import {
 } from "react-icons/si";
 import { projects } from "../data/portfolioData";
 
-const techIcons = {
-  "React": <SiReact color="#61DAFB" />,
-  "WebGL": <SiWebgl color="#990000" />,
-  "Vite": <SiVite color="#646CFF" />,
-  "Python": <SiPython color="#3776AB" />,
-  "Flask": <SiFlask color="var(--text-primary)" />,
-  "C++": <SiCplusplus color="#00599C" />,
-  "Scikit-Learn": <SiScikitlearn color="#F7931E" />,
-  "Gemini API": <Sparkles color="#8E24AA" size={14} />,
-  "PyTorch": <SiPytorch color="#EE4C2C" />,
-  "OpenCV": <SiOpencv color="#5C3EE8" />,
-  "MediaPipe": <Video color="#009688" size={14} />
-};
-
 export default function Projects() {
   return (
     <section className="projects-section" id="projects">

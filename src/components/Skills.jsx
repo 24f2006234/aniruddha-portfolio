@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { Code2, Palette, Cog, Database, Wrench, Brain } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
 import { 
   SiPython, SiTypescript, SiJavascript, SiCplusplus, 
   SiReact, SiVite, SiTailwindcss, SiWebgl, 
@@ -10,16 +9,6 @@ import {
 import { FaDatabase } from "react-icons/fa";
 import { skills } from "../data/portfolioData";
 import "../styles/Skills.css";
-
-const categoryIcons = {
-  Languages: <Code2 size={24} strokeWidth={1.5} />,
-  Frontend: <Palette size={24} strokeWidth={1.5} />,
-  Backend: <Cog size={24} strokeWidth={1.5} />,
-  Database: <Database size={24} strokeWidth={1.5} />,
-  "Tools / Platforms": <Wrench size={24} strokeWidth={1.5} />,
-  "Core CS": <Brain size={24} strokeWidth={1.5} />,
-  "ML / Data": <Brain size={24} strokeWidth={1.5} />,
-};
 
 const getSkillIcon = (skill) => {
   const map = {

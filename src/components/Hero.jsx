@@ -4,18 +4,9 @@ import { personalInfo } from "../data/portfolioData";
 import { Copy, Check } from "lucide-react";
 import { FaGithub, FaLinkedin, FaDiscord, FaEnvelope, FaFileAlt } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
-import heroBanner from "../assets/hero.png";
 import "../styles/Hero.css";
 
 export default function Hero() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(personalInfo.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <section className="hero" id="hero">
       <div className="container">
@@ -73,6 +64,7 @@ export default function Hero() {
   );
 }
 
+// eslint-disable-next-line no-unused-vars
 function AnimatedSocialIcon({ href, title, icon: Icon, className, style }) {
   const [hovered, setHovered] = useState(false);
 

@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaSpotify } from "react-icons/fa";
 import { gamesData } from "../data/gamesData";
 import SpotifyNowPlaying from "./SpotifyNowPlaying";
 import "../styles/Games.css";
 
-const songsData = [
-  { title: "Bohemian Rhapsody", artist: "Queen" },
-  { title: "Hotel California", artist: "Eagles" },
-  { title: "Stairway to Heaven", artist: "Led Zeppelin" },
-  { title: "Imagine", artist: "John Lennon" },
-  { title: "Smells Like Teen Spirit", artist: "Nirvana" },
-];
-
 export default function Games() {
   const [activeTab, setActiveTab] = useState("games");
+  const [topTracks, setTopTracks] = useState([]);
+  const [loadingTracks, setLoadingTracks] = useState(true);
+
+  useEffect(() => {
+    async function fetchTopTracks() {
+      try {
+        const res = await fetch('/api/top-tracks');
+        if (res.ok) {
+          const data = await res.json();
+          setTopTracks(data.tracks || []);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoadingTracks(false);
+      }
+    }
+    fetchTopTracks();
+  }, []);
 
   return (
     <div className="interests-page">
@@ -86,21 +98,44 @@ export default function Games() {
               </div>
 
               <div className="songs-list">
-                <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Top Tracks (Manual)</h3>
-                {songsData.map((song, i) => (
-                  <motion.div
-                    key={i}
-                    className="song-card"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.05, ease: [0.4, 0, 0.2, 1] }}
-                  >
-                    <div className="song-info">
-                      <h3 className="song-title">{song.title}</h3>
-                      <p className="song-artist">{song.artist}</p>
-                    </div>
-                  </motion.div>
-                ))}
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Top Tracks (This Month)</h3>
+                {loadingTracks ? (
+                  <div className="spotify-widget-clean skeleton" style={{ height: '80px', width: '100%', borderRadius: '12px' }}></div>
+                ) : (
+                  topTracks.map((song, i) => (
+                    <motion.div
+                      key={i}
+                      className="song-card premium-song-card"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: i * 0.05, ease: [0.4, 0, 0.2, 1] }}
+                      onClick={() => window.open(song.songUrl, '_blank')}
+                    >
+                      <div className="song-rank">{i + 1}</div>
+                      <div className="song-image-container">
+                        {song.albumImageUrl ? (
+                          <img 
+                            src={song.albumImageUrl} 
+                            alt={song.title} 
+                            className="song-cover-art"
+                          />
+                        ) : (
+                          <div className="song-cover-placeholder"></div>
+                        )}
+                        <div className="song-play-overlay">
+                          <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                      </div>
+                      <div className="song-info">
+                        <h3 className="song-title" title={song.title}>{song.title}</h3>
+                        <p className="song-artist" title={song.artist}>{song.artist}</p>
+                      </div>
+                      <div className="song-action">
+                        <FaSpotify color="#1DB954" size={24} />
+                      </div>
+                    </motion.div>
+                  ))
+                )}
               </div>
             </section>
           )}

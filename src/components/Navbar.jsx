@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Sun, Moon, ChevronDown } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
-import { personalInfo } from "../data/portfolioData";
 import "../styles/Navbar.css";
 
 const navLinks = [
@@ -15,7 +14,6 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { isDark, toggleTheme } = useTheme();
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {

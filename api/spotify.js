@@ -1,3 +1,4 @@
+/* global process */
 export const config = {
   runtime: 'edge',
 };
@@ -6,7 +7,7 @@ const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 const NOW_PLAYING_ENDPOINT = "https://api.spotify.com/v1/me/player/currently-playing";
 const RECENTLY_PLAYED_ENDPOINT = "https://api.spotify.com/v1/me/player/recently-played?limit=1";
 
-export default async function handler(req) {
+export default async function handler() {
   const clientId = (process.env.SPOTIFY_CLIENT_ID || '').trim();
   const clientSecret = (process.env.SPOTIFY_CLIENT_SECRET || '').trim();
   const refreshToken = (process.env.SPOTIFY_REFRESH_TOKEN || '').trim();

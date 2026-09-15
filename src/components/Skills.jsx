@@ -70,21 +70,7 @@ function SkillPill({ skill, delay }) {
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ delay, duration: 0.2 }}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '6px',
-        fontSize: '0.75rem',
-        padding: '0.25rem 0.6rem',
-        background: 'var(--bg-secondary)',
-        border: '1px solid var(--border-light)',
-        borderRadius: '4px',
-        color: 'var(--text-secondary)',
-        fontWeight: 500,
-        transition: 'all 0.2s ease',
-        cursor: 'default'
-      }}
-      whileHover={{ y: -2, backgroundColor: 'var(--border-light)', color: 'var(--text-primary)' }}
+      className="skill-pill-custom"
     >
       <span style={{ fontSize: '14px', display: 'flex', alignItems: 'center' }}>
         {getSkillIcon(skill) ? getSkillIcon(skill) : null}

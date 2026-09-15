@@ -80,7 +80,10 @@ export default async function handler() {
         songUrl: track.external_urls.spotify,
       }), {
         status: 200,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 
+          'Content-Type': 'application/json',
+          'Cache-Control': 'public, s-maxage=0, stale-while-revalidate=5'
+        }
       });
     }
 
@@ -90,7 +93,10 @@ export default async function handler() {
     if (!track) {
         return new Response(JSON.stringify({ isPlaying: false }), {
           status: 200,
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 
+            'Content-Type': 'application/json',
+            'Cache-Control': 'public, s-maxage=0, stale-while-revalidate=5'
+          }
         });
     }
 
@@ -102,7 +108,10 @@ export default async function handler() {
       songUrl: track.external_urls.spotify,
     }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 
+        'Content-Type': 'application/json',
+        'Cache-Control': 'public, s-maxage=0, stale-while-revalidate=5'
+      }
     });
     
   } catch (error) {

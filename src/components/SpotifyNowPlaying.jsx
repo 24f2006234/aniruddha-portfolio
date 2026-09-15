@@ -8,7 +8,7 @@ export default function SpotifyNowPlaying() {
   useEffect(() => {
     async function fetchSpotify() {
       try {
-        const res = await fetch('/api/spotify');
+        const res = await fetch(`/api/spotify?_t=${Date.now()}`);
         if (!res.ok) {
           throw new Error('Failed to fetch Spotify data');
         }

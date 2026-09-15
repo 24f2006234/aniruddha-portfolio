@@ -1,0 +1,60 @@
+.falling-leaves-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2; /* above banner img, below profile */
+}
+
+.falling-leaf {
+  position: absolute;
+  top: -10%;
+  width: 14px;
+  height: 14px;
+  border-radius: 0 50% 0 50%;
+  opacity: 0;
+  /* Two animations: falling down (Y), and swaying (X and rotation) */
+  animation-name: fall, sway;
+  animation-iteration-count: infinite, infinite;
+  animation-timing-function: linear, ease-in-out;
+  box-shadow: inset 0px 0px 2px rgba(0,0,0,0.3);
+}
+
+.falling-leaf.color-0 { background: #8b0000; } /* Dark Red */
+.falling-leaf.color-1 { background: #c0392b; } /* Bright Red */
+.falling-leaf.color-2 { background: #d35400; } /* Orange Red */
+
+@keyframes fall {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: scale(var(--scale)) translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: scale(var(--scale)) translateX(40px) rotate(90deg);
+  }
+  50% {
+    transform: scale(var(--scale)) translateX(0px) rotate(180deg);
+  }
+  75% {
+    transform: scale(var(--scale)) translateX(-40px) rotate(270deg);
+  }
+  100% {
+    transform: scale(var(--scale)) translateX(0px) rotate(360deg);
+  }
+}

@@ -48,6 +48,11 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Accounts for fixed navbar height */
+}
+
 body {
   margin: 0;
 }

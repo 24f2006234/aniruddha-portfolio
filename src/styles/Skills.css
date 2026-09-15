@@ -23,7 +23,26 @@
   }
 }
 
+.skill-pill-custom {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 4px;
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: default;
+}
 
+.skill-pill-custom:hover {
+  transform: translateY(-2px);
+  background-color: var(--border-light) !important;
+  color: var(--text-primary) !important;
+}
 
 /* LeetCode Mini Bento Card Custom Styles */
 .leetcode-mini-content {

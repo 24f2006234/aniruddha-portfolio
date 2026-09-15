@@ -61,14 +61,13 @@ export default function Experience() {
                     </div>
                     <div>
                       <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-primary)', marginBottom: '0.15rem' }}>
-                        Data Science
+                        Indian Institute of Technology, Madras
                       </h3>
                       <div style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>
-                        IIT Madras
+                        Bachelor of Science - BS, Data Science
                       </div>
                       <div style={{ display: 'flex', gap: '1rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                        <span>Chennai, India</span>
-                        <span>Present</span>
+                        <span>2024 – Present</span>
                       </div>
                     </div>
                   </div>
@@ -85,14 +84,13 @@ export default function Experience() {
                     </div>
                     <div>
                       <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-primary)', marginBottom: '0.15rem' }}>
-                        Computer Science Engineering (CSE)
+                        Adamas University
                       </h3>
                       <div style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>
-                        Adamas University
+                        Computer Science Engineering
                       </div>
                       <div style={{ display: 'flex', gap: '1rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                        <span>Kolkata, India</span>
-                        <span>Present</span>
+                        <span>2024 – Present</span>
                       </div>
                     </div>
                   </div>

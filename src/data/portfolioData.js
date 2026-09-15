@@ -98,18 +98,28 @@ export const certifications = [
     title: "1st Place — Coding Premier League",
     issuer: "Adamas University (SIGNIFIYA)",
     image: "/achievements/au-footer-logo.png",
+    gallery: ["/achievements/cpl1.png", "/achievements/cpl2.png", "/achievements/cpl3.png"],
+    icon: "award",
+  },
+  {
+    title: "1st Place — VibeForge 1.0",
+    issuer: "Adamas University",
+    image: "/achievements/au-footer-logo.png",
+    gallery: ["/achievements/vibeforge1.png", "/achievements/vibeforge2.png", "/achievements/vibeforge3.png"],
     icon: "award",
   },
   {
     title: "1st Runner-Up — InnovateX 2.0",
     issuer: "IMI Kolkata Techfest",
     image: "/achievements/International_Management_Institute_Kolkata_Logo.svg",
+    gallery: ["/achievements/innovatex1.png", "/achievements/innovatex2.png", "/achievements/innovatex3.png"],
     icon: "award",
   },
   {
     title: "Finalist — Hackforge, Srijan",
     issuer: "Jadavpur University",
     image: "/achievements/Jadavpur_University_Logo.svg",
+    gallery: ["/achievements/srijan1.png", "/achievements/srijan2.png", "/achievements/srijan3.png"],
     icon: "award",
   },
   {

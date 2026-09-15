@@ -44,7 +44,9 @@ export default async function handler() {
     });
 
     if (!topTracksRes.ok) {
-      throw new Error(`Failed to fetch top tracks`);
+      const errText = await topTracksRes.text();
+      console.error("Spotify Top Tracks Error:", topTracksRes.status, errText);
+      throw new Error(`Failed to fetch top tracks (Status ${topTracksRes.status}): ${errText}`);
     }
 
     const data = await topTracksRes.json();

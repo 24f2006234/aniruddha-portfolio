@@ -29,17 +29,20 @@ export default function Hero() {
         >
           {/* Top Row: Image + Text */}
           <div className="hero-profile-top">
-            <img 
-              src="/aniru.png" 
-              alt={personalInfo.name} 
-              className="hero-profile-img" 
-            />
+            <div style={{ position: 'relative', display: 'inline-block', flexShrink: 0 }}>
+              <img 
+                src="/aniru.png" 
+                alt={personalInfo.name} 
+                className="hero-profile-img" 
+              />
+              <div className="online-status-dot" title="Online and available"></div>
+            </div>
             <div className="hero-profile-text">
               <h1 className="hero-profile-name" aria-label={personalInfo.name}>
                 {personalInfo.name}
                 <MdVerified size={28} color="#1d9bf0" style={{ marginLeft: '6px' }} />
               </h1>
-              <p className="hero-profile-title">20, {personalInfo.title}, IND</p>
+              <p className="hero-profile-title">Level 19 | Class: Data Scientist | Spec: ML + Full-Stack</p>
             </div>
           </div>
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FileBadge, ExternalLink } from "lucide-react";
+import { FileBadge, CheckCircle2, ExternalLink } from "lucide-react";
 import { certifications } from "../data/portfolioData";
 import "../styles/Projects.css";
 
@@ -10,7 +10,7 @@ export default function Certificates() {
 
   return (
     <section id="certificates">
-      <div className="container">
+      <div className="container" style={{ margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -21,52 +21,78 @@ export default function Certificates() {
           <h2 className="section-title">My Certificates</h2>
         </motion.div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1.5rem, 5vw, 2.5rem)', width: '100%' }}>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+          gap: '1.25rem', 
+          width: '100%' 
+        }}>
           {certificates.map((cert, i) => (
-            <motion.div
+            <motion.a
               key={i}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              href={cert.url || cert.image || '#'}
+              target="_blank"
+              rel="noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02, backgroundColor: 'var(--bg-secondary)' }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start', padding: '0.5rem 0' }}
+              transition={{ delay: i * 0.1, duration: 0.4 }}
+              style={{ 
+                textDecoration: 'none', 
+                padding: '1.25rem', 
+                background: 'color-mix(in srgb, var(--bg-secondary) 40%, transparent)',
+                border: '1px solid var(--border-light)',
+                borderRadius: '12px',
+                display: 'flex',
+                gap: '1rem',
+                alignItems: 'center',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
             >
+              {/* Logo */}
               <div style={{ 
-                width: '48px', 
-                height: '48px', 
+                width: '56px', 
+                height: '56px', 
                 flexShrink: 0,
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
                 background: '#fff', 
                 borderRadius: '8px',
-                border: '1px solid var(--border-light)',
-                overflow: 'hidden',
-                padding: '4px'
+                padding: '4px',
+                border: '1px solid rgba(0,0,0,0.05)',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
               }}>
                 {cert.image ? (
                   <img src={cert.image} alt="Certificate" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 ) : (
-                  <FileBadge size={24} color="var(--primary)" />
+                  <FileBadge size={28} color="var(--text-secondary)" />
                 )}
               </div>
-              <div>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-primary)', margin: '0 0 0.15rem 0', lineHeight: 1.2, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  {cert.title}
-                  <a href={cert.url || cert.image || '#'} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', color: 'var(--text-muted)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>
-                    <ExternalLink size={16} />
-                  </a>
-                </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', margin: '0 0 0.5rem 0', fontWeight: 500 }}>{cert.issuer}</p>
-                {cert.date && <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: '0 0 0.25rem 0' }}>Issued {cert.date}</p>}
-                {cert.credentialId && <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: '0 0 0.5rem 0' }}>Credential ID {cert.credentialId}</p>}
-                {cert.skills && (
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: '0.5rem 0 0 0' }}>
-                    <span style={{ fontWeight: 600 }}>Skills:</span> {cert.skills.join(', ')}
+
+              {/* Content */}
+              <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '0.25rem' }}>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: '600', color: 'var(--text-primary)', margin: 0, lineHeight: 1.3, wordBreak: 'break-word' }}>
+                    {cert.title}
+                  </h3>
+                  <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'color-mix(in srgb, #4ADE80 15%, transparent)', padding: '4px', borderRadius: '50%' }} title="Unlocked Skill">
+                    <CheckCircle2 size={16} color="#4ADE80" strokeWidth={2.5} />
+                  </div>
+                </div>
+                
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', margin: 0, fontWeight: 500 }}>
+                  {cert.issuer}
+                </p>
+                {cert.credentialId && (
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.75rem', margin: '0.25rem 0 0 0' }}>
+                    ID: {cert.credentialId}
                   </p>
                 )}
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

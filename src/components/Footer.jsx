@@ -3,7 +3,6 @@ import { Link } from "react-scroll";
 import { personalInfo } from "../data/portfolioData";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { ArrowUp } from "lucide-react";
-import uiCompanyLogo from "../assets/the ui company.png";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -64,21 +63,6 @@ export default function Footer() {
           <p style={{ color: "var(--text-muted)", fontSize: "0.9rem", margin: 0 }}>
             &copy; {year} {personalInfo.name}. All rights reserved.
           </p>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <span style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>Designed & developed by</span>
-            <a 
-              href="https://the-ui-company.vercel.app/" 
-              target="_blank" 
-              rel="noreferrer" 
-              style={{ display: 'flex', alignItems: 'center', opacity: 0.8, transition: 'opacity 0.2s' }}
-              onMouseEnter={(e) => e.currentTarget.style.opacity = 1} 
-              onMouseLeave={(e) => e.currentTarget.style.opacity = 0.8}
-            >
-              <img src={uiCompanyLogo} alt="The UI Company" className="ui-company-logo" />
-            </a>
-          </div>
-
           <Link to="hero" smooth duration={800} className="back-to-top-btn">
             Back to Top <ArrowUp size={16} />
           </Link>

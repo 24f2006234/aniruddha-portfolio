@@ -5,14 +5,14 @@ import iitmLogo from "../assets/iitm.png";
 
 export const personalInfo = {
   name: "Aniruddha Das",
-  title: "Data Scientist | ML + Full-Stack",
+  title: "Full-Stack & ML Engineer",
   email: "aniruddha84860@gmail.com",
   phone: "",
   location: "Greater Kolkata Area, India",
   linkedin: "https://www.linkedin.com/in/aniruddhadas-73a850319",
   github: "https://github.com/24f2006234",
   summary:
-    "Dual-degree student — Data Science at IIT Madras, CSE at Adamas University. Builds systems that go past the model: real-time data pipelines, ML services, and the full-stack layer that makes them usable. Recent work spans live aviation telemetry, ML-driven candidate matching, and applied ML on Google Cloud.",
+    "Dual-degree student — Data Science at IIT Madras, CSE at Adamas University. I build end-to-end applications, from backend APIs and ML integrations to interactive, high-performance frontends. Recent work spans real-time data visualization, full-stack web platforms, and applied ML.",
 };
 
 export const education = {
@@ -34,11 +34,10 @@ export const skills = {
 
 export const projects = [
   {
-    title: "AeroGrid — Aviation Intelligence Platform",
-    tech: ["React", "WebGL", "FastAPI", "PyTorch"],
+    title: "AeroGrid",
+    tech: ["React", "TypeScript", "Node.js", "FastAPI", "PyTorch", "WebGL"],
     year: "2026",
-    description:
-      "Full-stack platform ingesting live global flight telemetry and scheduling data, visualized on an interactive 3D globe with ML-based ETA and delay prediction.",
+    description: "Aviation intelligence platform with live telemetry and a trained ML model.",
     bullets: [
       "Time-series sessionization for splitting continuous telemetry into individual flights.",
       "Spatial feature engineering and real-time WebGL rendering under frequent data updates.",
@@ -46,14 +45,13 @@ export const projects = [
     color: "#FF6B6B",
     iconName: "Plane",
     image: aeroGridImg,
-    link: "https://github.com/24f2006234/AeroGrid_Analytics",
+    github: "https://github.com/24f2006234/AeroGrid_Analytics",
   },
   {
     title: "Placement Portal",
-    tech: ["React", "Flask", "Scikit-Learn", "Gemini API"],
+    tech: ["React", "Vite", "Flask", "Scikit-Learn", "Gemini API"],
     year: "2026",
-    description:
-      "Campus placement and talent-matching platform with a resume-to-job matchmaking engine.",
+    description: "ML-based resume-to-job matching platform.",
     bullets: [
       "Developed a SPA with session-based auth, REST API gateway, and candidate-job relevance scoring.",
       "Auto-generated candidate insights and interview questions from unstructured PDF resumes.",
@@ -61,7 +59,7 @@ export const projects = [
     color: "#C084FC",
     iconName: "Briefcase",
     image: placementPortalImg,
-    link: "https://github.com/24f2006234/placement-portal_app",
+    github: "https://github.com/24f2006234/placement-portal_app",
   },
   {
     title: "Surplus Grid",
@@ -75,21 +73,18 @@ export const projects = [
     color: "#4ADE80",
     iconName: "Zap",
     image: surplusGridImg,
-    link: "#",
+    github: "https://github.com/pradhan-not-found/SurplusGrid",
   },
   {
-    title: "Project Beta (Coming Soon)",
-    tech: ["TypeScript", "Next.js", "Tailwind CSS"],
-    year: "2027",
-    description: "A modern web application with a focus on exceptional UI/UX design.",
-    bullets: [
-      "Designing complex interactive components.",
-      "Optimizing core web vitals for performance."
-    ],
+    title: "More coming soon",
+    tech: [],
+    year: "",
+    description: "I'm always working on new ideas and exploring different technologies. Stay tuned for future projects!",
+    bullets: [],
     color: "#60A5FA",
-    iconName: "Layout",
+    iconName: "Sparkles",
     image: null,
-    link: "#",
+    link: null,
   }
 ];
 

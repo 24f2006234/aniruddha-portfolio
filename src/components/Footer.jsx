@@ -22,7 +22,7 @@ export default function Footer() {
               </span>
             </Link>
             <p style={{ color: "var(--text-secondary)", fontSize: "1rem", lineHeight: "1.6", maxWidth: '400px', marginBottom: '2rem' }}>
-              Architecting real-time data pipelines, deploying scalable ML services, and crafting the full-stack layers that make intelligent systems accessible.
+              Building end-to-end applications, from backend APIs and ML integrations to interactive, high-performance frontends.
             </p>
             
             {/* Socials */}

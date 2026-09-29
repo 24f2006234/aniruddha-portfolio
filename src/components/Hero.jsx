@@ -42,7 +42,7 @@ export default function Hero() {
                 {personalInfo.name}
                 <MdVerified size={28} color="#1d9bf0" style={{ marginLeft: '6px' }} />
               </h1>
-              <p className="hero-profile-title">Level 19 | Class: Data Scientist | Spec: ML + Full-Stack</p>
+              <p className="hero-profile-title">CS + Data Science student &middot; Full-Stack &amp; ML</p>
             </div>
           </div>
 

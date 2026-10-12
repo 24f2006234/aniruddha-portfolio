@@ -88,7 +88,7 @@ export const projects = [
     color: "#38BDF8",
     iconName: "ShieldCheck",
     image: checkpostImg,
-    github: null,
+    github: "https://github.com/pradhan-not-found/Checkpost",
     link: null,
   }
 ];

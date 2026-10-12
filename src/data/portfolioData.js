@@ -1,6 +1,7 @@
 import aeroGridImg from "../assets/AeroGrid_Analytics.png";
 import placementPortalImg from "../assets/placement-portal_app.png";
 import surplusGridImg from "../assets/surplusgrid.png";
+import checkpostImg from "../assets/checkpost.png";
 import iitmLogo from "../assets/iitm.png";
 
 export const personalInfo = {
@@ -76,14 +77,18 @@ export const projects = [
     github: "https://github.com/pradhan-not-found/SurplusGrid",
   },
   {
-    title: "More coming soon",
-    tech: [],
-    year: "",
-    description: "I'm always working on new ideas and exploring different technologies. Stay tuned for future projects!",
-    bullets: [],
-    color: "#60A5FA",
-    iconName: "Sparkles",
-    image: null,
+    title: "Checkpost",
+    tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Framer Motion", "Firebase", "Supabase", "Vercel"],
+    year: "2026",
+    description: "Web Application Firewall built exclusively for autonomous AI agents, acting as a wire-level checkpoint between AI agents and financial tools, APIs, or systems.",
+    bullets: [
+      "Wire-level checkpoint positioned entirely between the AI agent and every financial tool, API, or system it attempts to use.",
+      "Secures autonomous agent tool calls and infrastructure with real-time monitoring and policy enforcement.",
+    ],
+    color: "#38BDF8",
+    iconName: "ShieldCheck",
+    image: checkpostImg,
+    github: null,
     link: null,
   }
 ];

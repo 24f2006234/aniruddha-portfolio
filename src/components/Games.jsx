@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaSpotify, FaPlay, FaExternalLinkAlt } from "react-icons/fa";
-import { Gamepad2, Headphones, Sparkles, TrendingUp, Radio } from "lucide-react";
+import { Gamepad2, Headphones } from "lucide-react";
 import { gamesData } from "../data/gamesData";
 import SpotifyNowPlaying from "./SpotifyNowPlaying";
 import "../styles/Games.css";
 
-// Curated high-fidelity top tracks matching Aniruddha's Spotify rotation
+// Curated fallback top tracks if API is unavailable
 const fallbackSongs = [
   { 
     title: "If The Sun Burns Out Tonight", 
@@ -43,7 +43,6 @@ const fallbackSongs = [
 export default function Games() {
   const [activeTab, setActiveTab] = useState("songs");
   const [topTracks, setTopTracks] = useState({ loading: true, data: [], error: null });
-  const [isFallback, setIsFallback] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -63,17 +62,13 @@ export default function Games() {
         if (isMounted) {
           if (json.tracks && json.tracks.length > 0) {
             setTopTracks({ loading: false, data: json.tracks, error: null });
-            setIsFallback(false);
           } else {
             setTopTracks({ loading: false, data: fallbackSongs, error: null });
-            setIsFallback(true);
           }
         }
       } catch (err) {
         if (isMounted) {
-          // Gracefully load curated favorites if Spotify API scope or token is missing
           setTopTracks({ loading: false, data: fallbackSongs, error: err.message });
-          setIsFallback(true);
         }
       }
     }
@@ -84,18 +79,14 @@ export default function Games() {
 
   const navItems = [
     { 
-      id: "songs", 
-      label: "Music", 
-      icon: Headphones, 
-      badge: "Spotify",
-      count: "Live"
-    },
-    { 
       id: "games", 
       label: "Games", 
       icon: Gamepad2, 
-      badge: "Curated",
-      count: `${gamesData.length} Titles` 
+    },
+    { 
+      id: "songs", 
+      label: "Songs", 
+      icon: Headphones, 
     },
   ];
 
@@ -127,14 +118,10 @@ export default function Games() {
                   
                   <div className="sidebar-tab-inner">
                     <span className="sidebar-tab-icon">
-                      <Icon size={17} color={isActive ? "#1DB954" : "currentColor"} />
+                      <Icon size={17} color={isActive ? "var(--text-primary)" : "currentColor"} />
                     </span>
                     <span>{item.label}</span>
                   </div>
-
-                  <span className="sidebar-tab-badge">
-                    {item.count}
-                  </span>
                 </button>
               );
             })}
@@ -156,13 +143,9 @@ export default function Games() {
               >
                 {/* Header */}
                 <div className="interests-header-group">
-                  <div className="interests-kicker">
-                    <span className="interests-kicker-dot" />
-                    <span>Real-Time Spotify Integration</span>
-                  </div>
                   <h1 className="interests-heading">Songs I like</h1>
                   <p className="interests-subtitle">
-                    A live window into my current rotation and monthly top tracks streamed directly from Spotify.
+                    My top tracks and playlists, brought in directly from Spotify.
                   </p>
                 </div>
 
@@ -172,15 +155,9 @@ export default function Games() {
                 {/* Ranked Top Tracks Section */}
                 <div className="top-tracks-section">
                   <div className="tracks-section-header">
-                    <div className="tracks-section-title-wrap">
-                      <TrendingUp size={19} color="#1DB954" />
-                      <h2 className="tracks-section-title">
-                        {isFallback ? "Heavy Rotation" : "Top Tracks This Month"}
-                      </h2>
-                    </div>
-                    <span className="tracks-badge-tag">
-                      {isFallback ? "Curated Favorites" : "Spotify API • Short Term"}
-                    </span>
+                    <h2 className="tracks-section-title">
+                      Top Tracks This Month
+                    </h2>
                   </div>
 
                   {topTracks.loading ? (
@@ -275,13 +252,9 @@ export default function Games() {
               >
                 {/* Header */}
                 <div className="interests-header-group">
-                  <div className="interests-kicker" style={{ color: "#c084fc", background: "rgba(192, 132, 252, 0.1)", borderColor: "rgba(192, 132, 252, 0.25)" }}>
-                    <Sparkles size={12} />
-                    <span>Curated Showcase • Gaming</span>
-                  </div>
                   <h1 className="interests-heading">Games I like</h1>
                   <p className="interests-subtitle">
-                    A collection of standout titles with phenomenal storytelling, mechanics, atmosphere, and art direction that have shaped my appreciation for interactive design.
+                    A collection of titles with phenomenal storytelling, mechanics, and art direction that I've enjoyed playing.
                   </p>
                 </div>
 
@@ -303,16 +276,11 @@ export default function Games() {
                         loading="lazy"
                       />
                       
-                      {/* Scrim Gradient with Title and Tag */}
+                      {/* Scrim Gradient with Title */}
                       <div className="game-poster-scrim">
                         <h3 className="game-poster-title">
                           {game.title}
                         </h3>
-                        {game.tag && (
-                          <span className="game-poster-tag">
-                            {game.tag}
-                          </span>
-                        )}
                       </div>
                     </motion.div>
                   ))}

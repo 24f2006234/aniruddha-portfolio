@@ -195,36 +195,6 @@
   margin-bottom: 2rem;
 }
 
-.interests-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #1DB954;
-  margin-bottom: 0.6rem;
-  background: rgba(29, 185, 84, 0.1);
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid rgba(29, 185, 84, 0.2);
-}
-
-.interests-kicker-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #1DB954;
-  box-shadow: 0 0 8px #1DB954;
-  animation: pulseDot 2s infinite ease-in-out;
-}
-
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-
 .interests-heading {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 3.5vw, 2.75rem);
@@ -584,16 +554,6 @@
   letter-spacing: -0.015em;
   color: var(--text-primary);
   margin: 0;
-}
-
-.tracks-badge-tag {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.2rem 0.6rem;
-  border-radius: 6px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  color: var(--text-muted);
 }
 
 .tracks-list-container {

@@ -8,7 +8,7 @@ const fallbackTrack = {
   isPlaying: false,
   title: "Lovers On The Moon",
   artist: "AJ Mitchell",
-  albumImageUrl: "https://i.scdn.co/image/ab67616d0000b273b063462b803f2ffb94cbf166",
+  albumImageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a7/93/a0/a793a0b5-2e33-d0be-3887-77b5a4704638/886449601998.jpg/600x600bb.jpg",
   songUrl: "https://open.spotify.com/artist/01Xgg4h07n845K25WbK7pS",
   isFallback: true
 };
@@ -114,7 +114,7 @@ export default function SpotifyNowPlaying() {
 
         <div className="spotify-card-content">
           {/* Cover Art + Vinyl Peek Decoration */}
-          <div style={{ position: "relative", display: "inline-block", flexShrink: 0 }}>
+          <div className="spotify-art-container">
             {/* Vinyl disc element */}
             <div className="spotify-vinyl-disc" />
 

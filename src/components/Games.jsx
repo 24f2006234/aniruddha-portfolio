@@ -11,31 +11,31 @@ const fallbackSongs = [
   { 
     title: "If The Sun Burns Out Tonight", 
     artist: "VALORANT, Grabbitz, Oli Sykes, Courtney LaPlante", 
-    albumImageUrl: "https://i.scdn.co/image/ab67616d0000b2734e56fe86865d1d643d934bb0",
+    albumImageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/2d/7d/d8/2d7dd83c-21c2-f453-88b6-fe7009ae6a04/823375376644_Cover.jpg/600x600bb.jpg",
     songUrl: "https://open.spotify.com/track/4PzV9zM985u9L9Zz8fFp1F"
   },
   { 
     title: "Moves Like Jagger – Studio Recording", 
     artist: "Maroon 5, Christina Aguilera", 
-    albumImageUrl: "https://i.scdn.co/image/ab67616d0000b273d2a76f2d7fdde656df9c2c2f",
+    albumImageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/61/53/15/61531592-3e8b-1e85-b434-73a991d8143c/14UMGIM27067.rgb.jpg/600x600bb.jpg",
     songUrl: "https://open.spotify.com/track/7L531D79bL6fHh8c67n0jO"
   },
   { 
     title: "Want to Want Me", 
     artist: "Jason Derulo", 
-    albumImageUrl: "https://i.scdn.co/image/ab67616d0000b273d6bb6c4db96c7380f3316f39",
+    albumImageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f9/27/0b/f9270b80-9a2f-f7cc-a4e2-2f77372ede3c/093624927594.jpg/600x600bb.jpg",
     songUrl: "https://open.spotify.com/track/0nJW01T7XtvILxQgC5J7Wh"
   },
   { 
     title: "Somewhere Only We Know", 
     artist: "Keane", 
-    albumImageUrl: "https://i.scdn.co/image/ab67616d0000b27361be58a8a6509f6fc1e34ff6",
+    albumImageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/89/a6/f7/89a6f7be-a0e0-2524-a13b-6b5df7b7534a/06UMGIM24399.rgb.jpg/600x600bb.jpg",
     songUrl: "https://open.spotify.com/track/0ll8uFnc0nONO8CNTy9Cra"
   },
   { 
     title: "Hey, Soul Sister", 
     artist: "Train", 
-    albumImageUrl: "https://i.scdn.co/image/ab67616d0000b273200ff3f24bf7a8b417df874f",
+    albumImageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/fa/e8/28/fae8283a-ad10-a642-1d41-a4b3402da4ba/884977817027.jpg/600x600bb.jpg",
     songUrl: "https://open.spotify.com/track/4HlFJVHowRAx29LmZIg9Y7"
   },
 ];

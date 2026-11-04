@@ -1,295 +1,232 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaSpotify, FaPlay, FaExternalLinkAlt } from "react-icons/fa";
-import { Gamepad2, Headphones } from "lucide-react";
+import { ArrowUpRight, Gamepad2, Headphones } from "lucide-react";
 import { gamesData } from "../data/gamesData";
 import SpotifyNowPlaying from "./SpotifyNowPlaying";
+import { spotifySearchUrl } from "../utils/spotify";
 import "../styles/Games.css";
 
-// Curated fallback top tracks if API is unavailable
+const ease = [0.22, 1, 0.36, 1];
+
+// Shown only if the Spotify API is unreachable (local dev or an outage).
+// Links are Spotify searches, so they always resolve.
 const fallbackSongs = [
-  { 
-    title: "If The Sun Burns Out Tonight", 
-    artist: "VALORANT, Grabbitz, Oli Sykes, Courtney LaPlante", 
+  {
+    title: "If The Sun Burns Out Tonight",
+    artist: "VALORANT, Grabbitz, Oli Sykes, Courtney LaPlante",
     albumImageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/2d/7d/d8/2d7dd83c-21c2-f453-88b6-fe7009ae6a04/823375376644_Cover.jpg/600x600bb.jpg",
-    songUrl: "https://open.spotify.com/track/4PzV9zM985u9L9Zz8fFp1F"
   },
-  { 
-    title: "Moves Like Jagger – Studio Recording", 
-    artist: "Maroon 5, Christina Aguilera", 
+  {
+    title: "Moves Like Jagger",
+    artist: "Maroon 5, Christina Aguilera",
     albumImageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/61/53/15/61531592-3e8b-1e85-b434-73a991d8143c/14UMGIM27067.rgb.jpg/600x600bb.jpg",
-    songUrl: "https://open.spotify.com/track/7L531D79bL6fHh8c67n0jO"
   },
-  { 
-    title: "Want to Want Me", 
-    artist: "Jason Derulo", 
+  {
+    title: "Want to Want Me",
+    artist: "Jason Derulo",
     albumImageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f9/27/0b/f9270b80-9a2f-f7cc-a4e2-2f77372ede3c/093624927594.jpg/600x600bb.jpg",
-    songUrl: "https://open.spotify.com/track/0nJW01T7XtvILxQgC5J7Wh"
   },
-  { 
-    title: "Somewhere Only We Know", 
-    artist: "Keane", 
+  {
+    title: "Somewhere Only We Know",
+    artist: "Keane",
     albumImageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/89/a6/f7/89a6f7be-a0e0-2524-a13b-6b5df7b7534a/06UMGIM24399.rgb.jpg/600x600bb.jpg",
-    songUrl: "https://open.spotify.com/track/0ll8uFnc0nONO8CNTy9Cra"
   },
-  { 
-    title: "Hey, Soul Sister", 
-    artist: "Train", 
+  {
+    title: "Hey, Soul Sister",
+    artist: "Train",
     albumImageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/fa/e8/28/fae8283a-ad10-a642-1d41-a4b3402da4ba/884977817027.jpg/600x600bb.jpg",
-    songUrl: "https://open.spotify.com/track/4HlFJVHowRAx29LmZIg9Y7"
   },
+].map((s) => ({ ...s, songUrl: spotifySearchUrl(s.title, s.artist) }));
+
+const tabs = [
+  { id: "songs", label: "Songs", icon: Headphones },
+  { id: "games", label: "Games", icon: Gamepad2 },
 ];
 
-export default function Games() {
-  const [activeTab, setActiveTab] = useState("songs");
-  const [topTracks, setTopTracks] = useState({ loading: true, data: [], error: null });
+function TopTracks() {
+  const [state, setState] = useState({ loading: true, tracks: [] });
 
   useEffect(() => {
     let isMounted = true;
-
-    async function fetchTopTracks() {
+    (async () => {
       try {
         const res = await fetch(`/api/top-tracks?_t=${Date.now()}`);
-        if (!res.ok) {
-          throw new Error(`Failed to fetch top tracks: ${res.status}`);
-        }
+        if (!res.ok) throw new Error(`Failed to fetch top tracks: ${res.status}`);
         const json = await res.json();
-        
-        if (json.error) {
-          throw new Error(json.error);
-        }
-        
+        if (json.error) throw new Error(json.error);
         if (isMounted) {
-          if (json.tracks && json.tracks.length > 0) {
-            setTopTracks({ loading: false, data: json.tracks, error: null });
-          } else {
-            setTopTracks({ loading: false, data: fallbackSongs, error: null });
-          }
+          setState({ loading: false, tracks: json.tracks?.length ? json.tracks : fallbackSongs });
         }
-      } catch (err) {
-        if (isMounted) {
-          setTopTracks({ loading: false, data: fallbackSongs, error: err.message });
-        }
+      } catch {
+        if (isMounted) setState({ loading: false, tracks: fallbackSongs });
       }
-    }
-
-    fetchTopTracks();
-    return () => { isMounted = false; };
+    })();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  const navItems = [
-    { 
-      id: "games", 
-      label: "Games", 
-      icon: Gamepad2, 
-    },
-    { 
-      id: "songs", 
-      label: "Songs", 
-      icon: Headphones, 
-    },
-  ];
+  if (state.loading) {
+    return (
+      <ol className="track-list" aria-busy="true" aria-label="Loading top tracks">
+        {[0, 1, 2, 3, 4].map((n) => (
+          <li key={n} className="track-row is-skeleton">
+            <span className="skeleton-block track-rank-skeleton" />
+            <span className="skeleton-block track-cover" />
+            <span className="track-text">
+              <span className="skeleton-block skeleton-line" />
+              <span className="skeleton-block skeleton-line short" />
+            </span>
+          </li>
+        ))}
+      </ol>
+    );
+  }
+
+  return (
+    <ol className="track-list">
+      {state.tracks.map((song, i) => (
+        <motion.li
+          key={song.title + i}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, delay: i * 0.04, ease }}
+        >
+          <a
+            href={song.songUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="track-row"
+            aria-label={`${song.title} by ${song.artist}, open in Spotify`}
+          >
+            <span className="track-rank">{String(i + 1).padStart(2, "0")}</span>
+            {song.albumImageUrl ? (
+              <img className="track-cover" src={song.albumImageUrl} alt="" loading="lazy" />
+            ) : (
+              <span className="track-cover" />
+            )}
+            <span className="track-text">
+              <span className="track-title">{song.title}</span>
+              <span className="track-artist">{song.artist}</span>
+            </span>
+            <ArrowUpRight className="track-go" size={16} aria-hidden="true" />
+          </a>
+        </motion.li>
+      ))}
+    </ol>
+  );
+}
+
+function GamesGrid() {
+  return (
+    <ul className="games-grid">
+      {gamesData.map((game, i) => (
+        <motion.li
+          key={game.title}
+          className="game-card"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: i * 0.03, ease }}
+        >
+          <div className="game-poster">
+            <img
+              src={game.image}
+              alt={`${game.title} cover art`}
+              loading="lazy"
+              onError={(e) => {
+                e.currentTarget.style.visibility = "hidden";
+              }}
+            />
+          </div>
+          <div className="game-caption">
+            <span className="game-title">{game.title}</span>
+            {game.tag && <span className="game-tag">{game.tag}</span>}
+          </div>
+        </motion.li>
+      ))}
+    </ul>
+  );
+}
+
+export default function Games() {
+  const [activeTab, setActiveTab] = useState("songs");
 
   return (
     <div className="interests-page">
-      <div className="container interests-layout">
-        
-        {/* Navigation Switcher */}
-        <aside className="interests-sidebar">
-          <nav className="sidebar-nav-card" aria-label="Interests Navigation">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = activeTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  className={`sidebar-tab-btn ${isActive ? "active" : ""}`}
-                  onClick={() => setActiveTab(item.id)}
-                  aria-pressed={isActive}
-                >
-                  {/* Sliding animated background pill */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeTabPill"
-                      className="sidebar-tab-pill-bg"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  
-                  <div className="sidebar-tab-inner">
-                    <span className="sidebar-tab-icon">
-                      <Icon size={17} color={isActive ? "var(--text-primary)" : "currentColor"} />
-                    </span>
-                    <span>{item.label}</span>
-                  </div>
-                </button>
-              );
-            })}
-          </nav>
-        </aside>
+      <div className="container">
+        <motion.header
+          className="interests-hero"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease }}
+        >
+          <p className="interests-eyebrow">Off the clock</p>
+          <h1 className="interests-title">Interests</h1>
+          <p className="interests-lede">
+            What I listen to and play when I'm not building. The music below comes live from my Spotify.
+          </p>
+        </motion.header>
 
-        {/* Content Area */}
-        <div className="interests-content">
-          <AnimatePresence mode="wait">
-            {activeTab === "songs" && (
-              <motion.section
-                key="songs-section"
-                id="songs"
-                className="interests-section-block"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        <div className="interests-tabs" role="tablist" aria-label="Interests">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                id={`tab-${tab.id}`}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`panel-${tab.id}`}
+                className={`interests-tab${isActive ? " is-active" : ""}`}
+                onClick={() => setActiveTab(tab.id)}
               >
-                {/* Header */}
-                <div className="interests-header-group">
-                  <h1 className="interests-heading">Songs I like</h1>
-                  <p className="interests-subtitle">
-                    My top tracks and playlists, brought in directly from Spotify.
-                  </p>
-                </div>
-
-                {/* Hero Now Playing / Recently Played Card */}
-                <SpotifyNowPlaying />
-
-                {/* Ranked Top Tracks Section */}
-                <div className="top-tracks-section">
-                  <div className="tracks-section-header">
-                    <h2 className="tracks-section-title">
-                      Top Tracks This Month
-                    </h2>
-                  </div>
-
-                  {topTracks.loading ? (
-                    <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-                      {[1, 2, 3, 4, 5].map((n) => (
-                        <div 
-                          key={n} 
-                          className="track-row-card"
-                          style={{ height: "68px", opacity: 0.6 }}
-                        >
-                          <div style={{ width: "24px", height: "16px", background: "rgba(255,255,255,0.06)", borderRadius: "4px" }} />
-                          <div style={{ width: "52px", height: "52px", background: "rgba(255,255,255,0.06)", borderRadius: "8px" }} />
-                          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "6px" }}>
-                            <div style={{ width: "50%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "4px" }} />
-                            <div style={{ width: "30%", height: "12px", background: "rgba(255,255,255,0.04)", borderRadius: "4px" }} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="tracks-list-container">
-                      {topTracks.data.map((song, i) => (
-                        <motion.a
-                          key={song.title + i}
-                          href={song.songUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="track-row-card"
-                          initial={{ opacity: 0, x: -16 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.4, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                          title={`Listen to "${song.title}" on Spotify`}
-                        >
-                          {/* Rank slot: number transforms into play button on hover */}
-                          <div className="track-rank-slot">
-                            <span className="track-rank-num">
-                              {String(i + 1).padStart(2, "0")}
-                            </span>
-                            <span className="track-rank-play">
-                              <FaPlay size={12} />
-                            </span>
-                          </div>
-
-                          {/* Cover Art */}
-                          <div className="track-cover-thumb">
-                            {song.albumImageUrl ? (
-                              <img
-                                src={song.albumImageUrl}
-                                alt={song.title}
-                                loading="lazy"
-                              />
-                            ) : (
-                              <div style={{ width: "100%", height: "100%", background: "var(--bg-secondary)" }} />
-                            )}
-                          </div>
-
-                          {/* Metadata */}
-                          <div className="track-meta-content">
-                            <h3 className="track-song-title">
-                              {song.title}
-                            </h3>
-                            <p className="track-song-artist">
-                              {song.artist}
-                            </p>
-                          </div>
-
-                          {/* Action Button */}
-                          <div className="track-action-slot">
-                            <span className="track-spotify-btn">
-                              <FaSpotify size={14} />
-                              <span>Play</span>
-                              <FaExternalLinkAlt size={9} style={{ opacity: 0.7 }} />
-                            </span>
-                          </div>
-                        </motion.a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </motion.section>
-            )}
-
-            {activeTab === "games" && (
-              <motion.section
-                key="games-section"
-                id="games"
-                className="interests-section-block"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              >
-                {/* Header */}
-                <div className="interests-header-group">
-                  <h1 className="interests-heading">Games I like</h1>
-                  <p className="interests-subtitle">
-                    A collection of titles with phenomenal storytelling, mechanics, and art direction that I've enjoyed playing.
-                  </p>
-                </div>
-
-                {/* Poster Grid */}
-                <div className="games-grid-container">
-                  {gamesData.map((game, i) => (
-                    <motion.div
-                      key={game.title + i}
-                      className="game-poster-card"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.45, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
-                      title={game.title}
-                    >
-                      <img
-                        src={game.image}
-                        alt={game.title}
-                        className="game-poster-img"
-                        loading="lazy"
-                      />
-                      
-                      {/* Scrim Gradient with Title */}
-                      <div className="game-poster-scrim">
-                        <h3 className="game-poster-title">
-                          {game.title}
-                        </h3>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.section>
-            )}
-          </AnimatePresence>
+                {isActive && (
+                  <motion.span
+                    layoutId="interests-tab-bg"
+                    className="interests-tab-bg"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <Icon size={16} aria-hidden="true" />
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
 
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            id={`panel-${activeTab}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${activeTab}`}
+            className="interests-panel"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3, ease }}
+          >
+            {activeTab === "songs" ? (
+              <>
+                <SpotifyNowPlaying />
+                <div className="interests-subhead">
+                  <h2>Top tracks this month</h2>
+                </div>
+                <TopTracks />
+              </>
+            ) : (
+              <>
+                <div className="interests-subhead">
+                  <h2>Games I've loved</h2>
+                  <p>Picked for their storytelling, mechanics and art direction.</p>
+                </div>
+                <GamesGrid />
+              </>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

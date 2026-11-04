@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-scroll";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { Mail, ArrowUp } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { personalInfo } from "../data/portfolioData";
@@ -15,7 +14,6 @@ const NAV = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const onHome = useLocation().pathname === "/";
 
   return (
     <footer className="site-footer">
@@ -45,11 +43,7 @@ export default function Footer() {
             <ul>
               {NAV.map((item) => (
                 <li key={item.to}>
-                  {onHome ? (
-                    <Link to={item.to} smooth duration={800}>{item.label}</Link>
-                  ) : (
-                    <a href={`/#${item.to}`}>{item.label}</a>
-                  )}
+                  <a href={`/#${item.to}`}>{item.label}</a>
                 </li>
               ))}
               <li>

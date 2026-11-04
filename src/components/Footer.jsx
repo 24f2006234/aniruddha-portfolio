@@ -1,74 +1,70 @@
 import React from "react";
 import { Link } from "react-scroll";
+import { Link as RouterLink, useLocation } from "react-router-dom";
+import { Mail, ArrowUp } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { personalInfo } from "../data/portfolioData";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { ArrowUp } from "lucide-react";
+
+const NAV = [
+  { label: "About", to: "about" },
+  { label: "Projects", to: "projects" },
+  { label: "Skills", to: "skills" },
+  { label: "Education", to: "education" },
+  { label: "Contact", to: "contact" },
+];
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const onHome = useLocation().pathname === "/";
 
   return (
-    <footer style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
+    <footer className="site-footer">
       <div className="container">
-        
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '3rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '3rem', marginBottom: '2rem' }}>
-          
-          {/* Brand & Blurb */}
-          <div style={{ flex: '1 1 300px' }}>
-            <Link to="hero" smooth duration={800} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', marginBottom: '1.5rem', width: 'fit-content' }}>
-              <img src="/aniru.png" alt="Logo" style={{ width: "40px", height: "40px", borderRadius: "12px", objectFit: "cover" }} />
-              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-                {personalInfo.name}
-              </span>
-            </Link>
-            <p style={{ color: "var(--text-secondary)", fontSize: "1rem", lineHeight: "1.6", maxWidth: '400px', marginBottom: '2rem' }}>
-              Building end-to-end applications, from backend APIs and ML integrations to interactive, high-performance frontends.
-            </p>
-            
-            {/* Socials */}
-            <div style={{ display: 'flex', gap: '1.25rem' }}>
-              <a href={personalInfo.github} target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)', opacity: 0.6, transition: 'opacity 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.opacity = 1} onMouseLeave={(e) => e.currentTarget.style.opacity = 0.6}>
-                <FaGithub size={22} />
+        <div className="footer-top">
+          <div className="footer-brand">
+            <a href="/#hero" className="footer-brand-link" aria-label={`${personalInfo.name}, back to top`}>
+              <img src="/aniru.webp" alt="" width="36" height="36" loading="lazy" />
+              <span>{personalInfo.name}</span>
+            </a>
+            <p className="footer-blurb">{personalInfo.title}</p>
+            <div className="footer-socials">
+              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="icon-btn" aria-label="GitHub">
+                <FaGithub size={16} aria-hidden="true" />
               </a>
-              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)', opacity: 0.6, transition: 'opacity 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.opacity = 1} onMouseLeave={(e) => e.currentTarget.style.opacity = 0.6}>
-                <FaLinkedin size={22} />
+              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="icon-btn" aria-label="LinkedIn">
+                <FaLinkedin size={16} aria-hidden="true" />
               </a>
-              <a href={`mailto:${personalInfo.email}`} style={{ color: 'var(--text-primary)', opacity: 0.6, transition: 'opacity 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.opacity = 1} onMouseLeave={(e) => e.currentTarget.style.opacity = 0.6}>
-                <FaEnvelope size={22} />
+              <a href={`mailto:${personalInfo.email}`} className="icon-btn" aria-label="Email">
+                <Mail size={16} aria-hidden="true" />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div style={{ display: 'flex', gap: '4rem', flexWrap: 'wrap' }}>
-            <div>
-              <h4 style={{ color: 'var(--text-primary)', fontWeight: 600, marginBottom: '1.5rem' }}>Navigation</h4>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                {['About', 'Skills', 'Experience', 'Projects'].map((item) => (
-                  <li key={item}>
-                    <Link to={item.toLowerCase()} smooth duration={800} style={{ color: 'var(--text-secondary)', cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}>
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
+          <nav className="footer-nav" aria-label="Footer">
+            <h4>Navigation</h4>
+            <ul>
+              {NAV.map((item) => (
+                <li key={item.to}>
+                  {onHome ? (
+                    <Link to={item.to} smooth duration={800}>{item.label}</Link>
+                  ) : (
+                    <a href={`/#${item.to}`}>{item.label}</a>
+                  )}
+                </li>
+              ))}
+              <li>
+                <RouterLink to="/interests">Interests</RouterLink>
+              </li>
+            </ul>
+          </nav>
         </div>
 
-        {/* Bottom Bar */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '2rem' }}>
-          
-          <p style={{ color: "var(--text-muted)", fontSize: "0.9rem", margin: 0 }}>
-            &copy; {year} {personalInfo.name}. All rights reserved.
-          </p>
-          <Link to="hero" smooth duration={800} className="back-to-top-btn">
-            Back to Top <ArrowUp size={16} />
-          </Link>
-          
+        <div className="footer-bottom">
+          <p>&copy; {year} {personalInfo.name}</p>
+          <a href="/#hero" className="back-to-top-btn">
+            Back to top <ArrowUp size={16} aria-hidden="true" />
+          </a>
         </div>
-
       </div>
     </footer>
   );

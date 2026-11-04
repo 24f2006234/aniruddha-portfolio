@@ -8,7 +8,6 @@ import {
 } from "react-icons/si";
 import { FaDatabase } from "react-icons/fa";
 import { skills } from "../data/portfolioData";
-import "../styles/Skills.css";
 
 const getSkillIcon = (skill) => {
   const map = {
@@ -37,7 +36,7 @@ const getSkillIcon = (skill) => {
 function BentoCard({ category, items, i }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5, delay: i * 0.05 }}
@@ -86,10 +85,10 @@ export default function Skills() {
       <div className="container">
         <motion.div
           className="skills-header"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           style={{ textAlign: 'left', marginBottom: '2rem' }}
         >
           <h2 className="section-title">My Technical Skills</h2>

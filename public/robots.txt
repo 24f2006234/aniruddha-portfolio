@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aniruddhadas.vercel.app/sitemap.xml

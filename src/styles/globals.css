@@ -60,6 +60,11 @@
 }
 
 :root {
+  /* Brand accent: one colour, used sparingly. #d93a2b is 6:1 on white. */
+  --brand: #d93a2b;
+  --brand-soft: rgba(217, 58, 43, 0.08);
+  --brand-glow: rgba(217, 58, 43, 0.12);
+
   /* Vibrant Accents */
   --clr-red: #ff5f57;
   --clr-yellow: #febc2e;
@@ -84,6 +89,11 @@
 
 /* Dark Mode Variables — Pitch Matte Black */
 [data-theme="dark"] {
+  /* #ff6b5b is 7:1 on the dark background. */
+  --brand: #ff6b5b;
+  --brand-soft: rgba(255, 107, 91, 0.1);
+  --brand-glow: rgba(255, 107, 91, 0.16);
+
   --primary: #E8E8E8;
   --secondary: #A8A8A8;
   --tertiary: #141414;
@@ -550,6 +560,7 @@ section {
     padding: 1rem 0;
   }
 }
+
 
 /* Grid */
 .grid-2 {

@@ -53,7 +53,7 @@ function AchievementCard({ cert, i, rank, name, onImageClick }) {
       )}
 
       <div className="award-body">
-        <span className="chip" style={{ width: "fit-content" }}>
+        <span className={`chip award-rank${RankIcon === Trophy ? " is-first" : ""}`}>
           <RankIcon size={12} aria-hidden="true" /> {rank}
         </span>
         <h3>{name}</h3>
@@ -123,7 +123,7 @@ export default function Achievements() {
           <h2 className="section-title">Achievements</h2>
         </motion.div>
 
-        <div className="projects-grid">
+        <div className="awards-grid">
           {achievements.map((cert, i) => {
             const parts = cert.title.split(" — ");
             const rank = parts.length > 1 ? parts[0] : "Award";

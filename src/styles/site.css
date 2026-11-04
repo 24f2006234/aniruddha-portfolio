@@ -8,12 +8,38 @@
   --card-border: 1px solid var(--border-light);
 }
 
+/* Numbered section headings: "01  About  ─────". Numbering comes from a
+   CSS counter, so sections can be reordered without touching markup. */
+main {
+  counter-reset: section;
+}
+
 .section-head {
+  counter-increment: section;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
   margin-bottom: 1.75rem;
 }
 
+.section-head::before {
+  content: counter(section, decimal-leading-zero);
+  color: var(--brand);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.section-head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+}
+
 .section-head .section-title {
-  margin-bottom: 0.35rem;
+  margin: 0;
 }
 
 .section-sub {
@@ -153,14 +179,6 @@
 }
 
 /* ── Projects ──────────────────────────────────────────────── */
-.project-card.featured {
-  grid-column: 1 / -1;
-}
-
-.project-card.featured .project-thumb {
-  aspect-ratio: 21 / 9;
-}
-
 .project-title-row h3 {
   display: flex;
   align-items: center;
@@ -206,35 +224,65 @@
   box-shadow: var(--shadow-sm);
 }
 
-.project-thumb img {
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.project-card:hover .project-thumb img {
-  transform: scale(1.03);
-}
-
+/* Screenshots sit in a consistent window-style frame, so mixed light/dark
+   captures read as one set. */
 .project-thumb {
-  aspect-ratio: 16 / 9;
-  background: var(--bg-secondary);
-  border-bottom: var(--card-border);
+  aspect-ratio: 16 / 10;
+  padding: 1.1rem 1.1rem 0;
   overflow: hidden;
+  border-bottom: var(--card-border);
+  background:
+    radial-gradient(ellipse at 100% 0%, var(--brand-soft), transparent 60%),
+    var(--bg-secondary);
 }
 
 .project-thumb img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  display: block;
+  border: 1px solid var(--border-light);
+  border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .project-thumb img {
+  transform: translateY(-4px);
+}
+
+.project-highlight {
+  position: relative;
+  padding-left: 0.85rem;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.project-highlight::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.2em;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--brand);
+}
+
+.chip-more {
+  color: var(--text-muted);
 }
 
 .project-body {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.7rem;
   flex: 1;
-  padding: 1rem;
+  padding: 1.15rem 1.25rem 1.25rem;
 }
 
 .project-title-row {
@@ -245,7 +293,7 @@
 }
 
 .project-title-row h3 {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -345,7 +393,7 @@
 }
 
 .project-card:hover .project-more {
-  color: var(--text-primary);
+  color: var(--brand);
   gap: 0.5rem;
 }
 
@@ -361,7 +409,7 @@
 }
 
 .about-link:hover {
-  text-decoration-color: var(--text-primary);
+  text-decoration-color: var(--brand);
 }
 
 .about-facts {
@@ -514,7 +562,7 @@
 .pm-role {
   padding: 1.1rem 1.25rem;
   border: var(--card-border);
-  border-left: 3px solid var(--text-primary);
+  border-left: 3px solid var(--brand);
   border-radius: var(--card-radius);
   background: var(--bg-secondary);
 }
@@ -709,10 +757,57 @@
   overflow: hidden;
 }
 
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* The most recent award spans the full row, photo beside the text. */
+@media (min-width: 641px) {
+  .awards-grid > :first-child {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+
+  .awards-grid > :first-child .award-media {
+    flex: 0 0 58%;
+    aspect-ratio: 4 / 3;
+    border-bottom: 0;
+    border-right: var(--card-border);
+  }
+
+  .awards-grid > :first-child .award-body {
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  .awards-grid > :first-child .award-body h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .awards-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.award-rank {
+  width: fit-content;
+}
+
+.award-rank.is-first {
+  border-color: transparent;
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
 .award-media {
   position: relative;
   aspect-ratio: 16 / 10;
-  background: #000;
+  overflow: hidden;
+  background: var(--bg-secondary);
   border-bottom: var(--card-border);
 }
 
@@ -730,7 +825,12 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.award-card:hover .award-media button.zoom img {
+  transform: scale(1.03);
 }
 
 .carousel-btn {
@@ -1000,30 +1100,6 @@
   background: #23a559;
 }
 
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 1rem;
-  margin-top: 0.6rem;
-  color: var(--text-secondary);
-  font-size: 0.88rem;
-}
-
-.hero-meta span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 1.25rem 0 1rem;
-}
-
 /* ── Footer ────────────────────────────────────────────────── */
 .site-footer {
   padding: 2rem 0;
@@ -1199,57 +1275,89 @@ body,
 
 /* ── Contact ───────────────────────────────────────────────── */
 .contact-section {
-  padding-top: 4rem;
-  padding-bottom: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
 }
 
-.contact-title {
-  margin-bottom: 0.5rem;
+.cta-card {
+  position: relative;
+  overflow: hidden;
+  padding: 2.25rem 2rem;
+  border: var(--card-border);
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse at 100% 0%, var(--brand-glow), transparent 55%),
+    var(--bg-surface);
 }
 
-.contact-lede {
-  margin-bottom: 2rem;
+.cta-title {
+  max-width: 22ch;
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3.6vw, 2rem);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.cta-title span {
+  color: var(--brand);
+}
+
+.cta-sub {
+  margin: 0.75rem 0 0;
   color: var(--text-secondary);
-  font-size: 1.1rem;
+  font-size: 0.98rem;
 }
 
-.contact-pills {
+.cta-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 3rem;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
 }
 
-.contact-pill {
+.cta-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  margin: 1.5rem 0 0;
+  padding: 1.25rem 0 0;
+  list-style: none;
+  border-top: var(--card-border);
+}
+
+.cta-links a,
+.cta-links button {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid var(--border-light);
-  border-radius: 99px;
-  background: var(--bg-surface);
-  color: var(--text-primary);
+  gap: 0.45rem;
+  padding: 0.25rem 0;
+  border: 0;
+  background: none;
+  color: var(--text-secondary);
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  transition: color 0.2s ease;
 }
 
-.contact-pill:hover,
-.contact-pill:focus-visible {
-  border-color: var(--pill-accent, var(--text-muted));
-  color: var(--pill-accent, var(--text-primary));
+.cta-links a:hover,
+.cta-links button:hover {
+  color: var(--text-primary);
 }
 
-.contact-pill:focus-visible {
-  outline: 2px solid var(--pill-accent, var(--text-primary));
-  outline-offset: 2px;
-}
+@media (max-width: 600px) {
+  .cta-card {
+    padding: 1.6rem 1.25rem;
+  }
 
-.contact-pill:active {
-  transform: scale(0.97);
+  .cta-actions .btn {
+    flex: 1 1 100%;
+  }
 }
 
 .sr-only {

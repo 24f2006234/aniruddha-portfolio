@@ -6,6 +6,9 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "../data/portfolioData";
 import ProjectModal from "./ProjectModal";
 
+// The full stack is listed in each case study; cards show a short preview.
+const MAX_CHIPS = 4;
+
 export default function Projects() {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -80,12 +83,13 @@ export default function Projects() {
                     >
                       {project.title}
                     </button>
-                    {project.featured && <span className="chip featured-chip">Featured</span>}
                   </h3>
                   <span className="project-year">{project.year}</span>
                 </div>
 
                 <p className="project-desc">{project.description}</p>
+
+                {project.highlight && <p className="project-highlight">{project.highlight}</p>}
 
                 {project.role && (
                   <p className="project-role">
@@ -93,18 +97,13 @@ export default function Projects() {
                   </p>
                 )}
 
-                {project.bullets?.length > 0 && (
-                  <ul className="project-points">
-                    {project.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                )}
-
                 <div className="chip-list">
-                  {project.tech.map((t) => (
+                  {project.tech.slice(0, MAX_CHIPS).map((t) => (
                     <span className="chip" key={t}>{t}</span>
                   ))}
+                  {project.tech.length > MAX_CHIPS && (
+                    <span className="chip chip-more">+{project.tech.length - MAX_CHIPS}</span>
+                  )}
                 </div>
 
                 <div className="project-links">
@@ -113,11 +112,24 @@ export default function Projects() {
                       <ArrowUpRight size={14} aria-hidden="true" /> Live demo
                     </a>
                   )}
-                  {project.github && (
-                    <a href={project.github} target="_blank" rel="noreferrer" className="btn">
-                      <FaGithub size={14} aria-hidden="true" /> Source
-                    </a>
-                  )}
+                  {/* With a live demo next to it, Source collapses to an icon to keep one row. */}
+                  {project.github &&
+                    (project.link ? (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="icon-btn"
+                        aria-label={`${project.title} source code`}
+                        title="Source code"
+                      >
+                        <FaGithub size={16} aria-hidden="true" />
+                      </a>
+                    ) : (
+                      <a href={project.github} target="_blank" rel="noreferrer" className="btn">
+                        <FaGithub size={14} aria-hidden="true" /> Source
+                      </a>
+                    ))}
                   <span className="project-more" aria-hidden="true">
                     Case study <ArrowRight size={14} />
                   </span>

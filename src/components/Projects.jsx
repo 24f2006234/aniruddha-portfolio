@@ -1,12 +1,41 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useCallback } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "../data/portfolioData";
+import ProjectModal from "./ProjectModal";
 
 export default function Projects() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const activeSlug = searchParams.get("project");
+  const activeProject = projects.find((p) => p.slug === activeSlug);
+
+  // Opening pushes a history entry, so the browser Back button closes the modal.
+  const openProject = (slug) => {
+    setSearchParams({ project: slug }, { state: { fromCard: true } });
+  };
+
+  const closeProject = useCallback(() => {
+    if (location.state?.fromCard) {
+      navigate(-1);
+    } else {
+      // Opened from a shared link: drop the param without leaving the page.
+      setSearchParams({}, { replace: true });
+    }
+  }, [location.state, navigate, setSearchParams]);
+
   return (
     <section id="projects">
+      <AnimatePresence>
+        {activeProject && (
+          <ProjectModal key={activeProject.slug} project={activeProject} onClose={closeProject} />
+        )}
+      </AnimatePresence>
+
       <div className="container">
         <motion.div
           className="section-head"
@@ -22,7 +51,7 @@ export default function Projects() {
           {projects.map((project, i) => (
             <motion.article
               key={project.title}
-              className={`project-card${project.featured ? " featured" : ""}`}
+              className={`project-card is-clickable${project.featured ? " featured" : ""}`}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
@@ -42,13 +71,27 @@ export default function Projects() {
               <div className="project-body">
                 <div className="project-title-row">
                   <h3>
-                    {project.title}
+                    {/* Stretched button: its ::after covers the whole card. */}
+                    <button
+                      type="button"
+                      className="project-open"
+                      onClick={() => openProject(project.slug)}
+                      aria-haspopup="dialog"
+                    >
+                      {project.title}
+                    </button>
                     {project.featured && <span className="chip featured-chip">Featured</span>}
                   </h3>
                   <span className="project-year">{project.year}</span>
                 </div>
 
                 <p className="project-desc">{project.description}</p>
+
+                {project.role && (
+                  <p className="project-role">
+                    <span>My role</span> {project.role.title}
+                  </p>
+                )}
 
                 {project.bullets?.length > 0 && (
                   <ul className="project-points">
@@ -75,6 +118,9 @@ export default function Projects() {
                       <FaGithub size={14} aria-hidden="true" /> Source
                     </a>
                   )}
+                  <span className="project-more" aria-hidden="true">
+                    Case study <ArrowRight size={14} />
+                  </span>
                 </div>
               </div>
             </motion.article>

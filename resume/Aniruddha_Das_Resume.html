@@ -1,0 +1,162 @@
+<!doctype html>
+<!--
+  Resume source. ATS-friendly by design: one column, standard section headings,
+  real text (no images, icons, tables or columns), standard fonts.
+  Export to PDF:
+    chrome --headless=new --no-pdf-header-footer --print-to-pdf=Aniruddha_Das_Resume.pdf Aniruddha_Das_Resume.html
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Aniruddha Das - Resume</title>
+<style>
+  @page { size: A4; margin: 0.34in 0.48in; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.24;
+    color: #111;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  header { text-align: center; margin-bottom: 5pt; }
+  h1 { margin: 0; font-size: 20pt; letter-spacing: 1.2pt; color: #1f2a44; }
+  .headline { margin: 1pt 0 2pt; font-size: 10.8pt; color: #333; }
+  .contact { font-size: 9.2pt; color: #222; }
+  .contact span + span::before { content: " | "; color: #888; }
+
+  h2 {
+    margin: 6pt 0 2.5pt;
+    padding-bottom: 1.5pt;
+    border-bottom: 1px solid #1f2a44;
+    font-size: 10.6pt;
+    letter-spacing: 0.8pt;
+    text-transform: uppercase;
+    color: #1f2a44;
+  }
+
+  p { margin: 0; }
+  .row { display: flex; justify-content: space-between; gap: 10pt; }
+  .row .when { white-space: nowrap; font-style: italic; color: #333; }
+  .entry { margin-bottom: 3pt; }
+  .title { font-weight: 700; }
+  .meta { font-style: italic; color: #333; font-size: 9.5pt; }
+  ul { margin: 1pt 0 0; padding-left: 13pt; }
+  li { margin: 0 0 1pt; }
+  .skills p { margin-bottom: 1pt; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ANIRUDDHA DAS</h1>
+  <p class="headline">Full-Stack &amp; AI/ML Engineer | Kolkata, India | +91 84860 58724</p>
+  <p class="contact">
+    <span><a href="mailto:aniruddha84860@gmail.com">aniruddha84860@gmail.com</a></span>
+    <span><a href="https://aniruddhadas.vercel.app">aniruddhadas.vercel.app</a></span>
+    <span><a href="https://www.linkedin.com/in/aniruddha-das-73a850319">linkedin.com/in/aniruddha-das-73a850319</a></span>
+    <span><a href="https://github.com/24f2006234">github.com/24f2006234</a></span>
+  </p>
+</header>
+
+<h2>Summary</h2>
+<p>
+  Backend and applied-AI engineer pursuing a dual degree in CS (Adamas University) and Data Science (IIT Madras). Built the
+  backend of Vardaan, a voice AI agent that won 1st place at Aki Hacks &times; Hacktoberfest &rsquo;26, and an ML service that
+  predicts flight arrivals within ~9 min. 6&times; hackathon winner and finalist (4&times; first place). Seeking backend or AI/ML internships.
+</p>
+
+<h2>Education</h2>
+<div class="entry">
+  <div class="row"><span class="title">Indian Institute of Technology Madras</span><span class="when">Jul 2024 &ndash; Jul 2028</span></div>
+  <div class="row"><span class="meta">Bachelor of Science (BS), Data Science &amp; Applications</span><span class="meta">Project CGPA: 9.0/10</span></div>
+</div>
+<div class="entry">
+  <div class="row"><span class="title">Adamas University</span><span class="when">Aug 2024 &ndash; Aug 2028</span></div>
+  <div class="row"><span class="meta">B.Tech, Computer Science &amp; Engineering</span><span class="meta">CGPA: 8.0/10</span></div>
+  <p class="meta">Coursework: Data Structures &amp; Algorithms, OOP, DBMS, Operating Systems, Statistics</p>
+</div>
+
+<h2>Projects</h2>
+
+<div class="entry">
+  <div class="row">
+    <span><span class="title">Vardaan &ndash; Voice-First AI Agent</span> | 1st Place, Aki Hacks &times; Hacktoberfest &rsquo;26</span>
+    <span class="when">Oct 2026</span>
+  </div>
+  <p class="meta">Backend &amp; AI Engineer, team of 4 | Next.js, TypeScript, Groq/Llama 3.3, Gemini, Sarvam AI |
+    <a href="https://thevardaan.vercel.app">Live: thevardaan.vercel.app</a> |
+    <a href="https://github.com/fantastic4-team/Vardaan">GitHub</a></p>
+  <ul>
+    <li>Built the API layer for real inbound and outbound phone calls in 11 languages: a turn endpoint that runs each utterance through the agent for Sarvam&rsquo;s voice pipeline, and a webhook that stores call outcomes and transcripts.</li>
+    <li>Implemented the tool-calling loop (intent parsing, planning, execution) with web search over a Tavily &rarr; Brave &rarr; DuckDuckGo fallback chain, persistent memory and scheduled reminder callbacks.</li>
+    <li>Put Groq (Llama 3.3 70B) and Gemini 2.5 Flash behind one OpenAI-compatible client; secured endpoints with shared secrets and HMAC-signed sessions with scrypt hashing.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span><span class="title">Checkpost &ndash; Policy Firewall for AI Agents</span> | Hackathon project</span>
+    <span class="when">Jun 2026</span>
+  </div>
+  <p class="meta">Backend &amp; Policy Engine | Next.js, TypeScript, Firebase/Firestore, Supabase |
+    <a href="https://checkpost-ai.vercel.app">Live: checkpost-ai.vercel.app</a> |
+    <a href="https://github.com/pradhan-not-found/Checkpost">GitHub</a></p>
+  <ul>
+    <li>Built the proxy API that intercepts every AI-agent tool call and returns allow, block or hold before it reaches production.</li>
+    <li>Implemented a deterministic, deny-by-default policy engine (YAML rules, tool allow-lists, exact parameter matching) with no model inference on the enforcement path, keeping checks under 1 ms.</li>
+    <li>Added cost governance that tracks spend and retries per run and hard-stops runaway agents, plus a human approval queue and audit trail in Firestore.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span><span class="title">AeroGrid &ndash; Aviation Telemetry &amp; ETA Prediction</span> | Personal project</span>
+    <span class="when">Jun 2026 &ndash; Oct 2026</span>
+  </div>
+  <p class="meta">React, TypeScript, Three.js, Node.js/Express, FastAPI, PyTorch |
+    <a href="https://github.com/24f2006234/AeroGrid_Analytics">GitHub</a></p>
+  <ul>
+    <li>Architected a three-service system (React/Three.js, Express gateway, FastAPI ML service) tracking ~253 live aircraft; a one-minute cache with last-good fallback survives OpenSky rate limits and caps upstream calls at one per minute.</li>
+    <li>Built a pipeline turning ~29,900 raw ADS-B records (1,557 aircraft) into 6,157 labeled flights via 30-minute track splitting, vectorized Haversine distance to 4 hubs and time-to-arrival labels.</li>
+    <li>Trained a PyTorch MLP to ~9.1 min mean ETA error on held-out data, 55% below a mean baseline (R&sup2; 0.67), with 52% of predictions within 5 min and ~0.03 ms inference.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span><span class="title">Placement Portal &ndash; Resume-to-Job Matching Platform</span> | IIT Madras</span>
+    <span class="when">Jan 2026 &ndash; Jun 2026</span>
+  </div>
+  <p class="meta">React, Vite, Flask, SQLAlchemy, scikit-learn, Gemini API |
+    <a href="https://github.com/24f2006234/placement-portal_app">GitHub</a></p>
+  <ul>
+    <li>Built a Flask REST API and React SPA with session-cookie auth, replacing a server-rendered Jinja prototype.</li>
+    <li>Ranked candidates per job with TF-IDF and cosine similarity over parsed PDF resumes, weighting explicit technical terms.</li>
+    <li>Generated explainable Gemini evaluations citing resume evidence, cached to avoid repeat API calls.</li>
+  </ul>
+</div>
+
+<h2>Achievements</h2>
+<ul>
+  <li><b>1st Place, Aki Hacks &times; Hacktoberfest &rsquo;26</b> (MLH, Machine Learning Kolkata): built Vardaan.</li>
+  <li><b>1st Place, Coding Premier League</b>, SIGNIFIYA 2026: first of 40+ teams in competitive programming.</li>
+  <li><b>1st Place, VibeForge 1.0</b>, Adamas University.</li>
+  <li><b>1st Runner-Up, InnovateX 2.0</b>, IMI Kolkata Techfest: Adamas University&rsquo;s first top-3 finish there.</li>
+  <li><b>Finalist, Hackforge</b>, Srijan 2026, Jadavpur University: Top 25 of 1,000+ submissions.</li>
+</ul>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <p><b>Languages:</b> Python, TypeScript, JavaScript, Java, C/C++, SQL</p>
+  <p><b>Backend &amp; APIs:</b> Node.js, Express.js, FastAPI, Flask, Next.js, REST API design, Webhooks, Authentication (sessions, HMAC)</p>
+  <p><b>AI / ML:</b> PyTorch, scikit-learn, pandas, Feature Engineering, TF-IDF, LLM Tool Calling, Groq (Llama 3.3), Gemini API</p>
+  <p><b>Frontend:</b> React, Next.js, Tailwind CSS, Three.js, WebGL</p>
+  <p><b>Data &amp; Cloud:</b> Supabase, Firebase/Firestore, SQLite, Google BigQuery, Google Cloud Platform, Vercel, Git, Linux</p>
+  <p><b>Certifications:</b> Google Cloud Skill Badge, Use ML APIs on Google Cloud (2026); Programming in Java, NPTEL (2026)</p>
+</div>
+
+</body>
+</html>

@@ -281,6 +281,12 @@ export const projects = [
 
 export const certifications = [
   {
+    title: "1st Place — Aki Hacks × Hacktoberfest '26",
+    issuer: "Machine Learning Kolkata · Major League Hacking",
+    gallery: ["/achievements/akihacks1.webp", "/achievements/akihacks2.webp", "/achievements/akihacks3.webp"],
+    icon: "award",
+  },
+  {
     title: "1st Place — Coding Premier League",
     issuer: "Adamas University (SIGNIFIYA)",
     image: "/achievements/au-footer-logo.png",

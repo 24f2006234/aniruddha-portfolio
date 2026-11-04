@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Sun, Moon, ChevronDown } from "lucide-react";
+import { Sun, Moon, ChevronDown, Menu, X } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { personalInfo } from "../data/portfolioData";
 import "../styles/Navbar.css";
@@ -17,6 +17,15 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { isDark, toggleTheme } = useTheme();
   const [activeId, setActiveId] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Close the mobile menu on Escape.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,9 +116,43 @@ export default function Navbar() {
                 <Moon size={18} strokeWidth={2} aria-hidden="true" />
               )}
             </button>
+
+            <button
+              type="button"
+              className="nav-menu-btn"
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+            >
+              {menuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
+            </button>
           </div>
         </div>
       </nav>
+
+      {menuOpen && (
+        <div id="mobile-nav" className="mobile-nav">
+          <ul className="container">
+            {navLinks.map((link) => (
+              <li key={link.to}>
+                <a
+                  href={`/#${link.to}`}
+                  className={activeId === link.to ? "active" : ""}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <Link to="/interests" onClick={() => setMenuOpen(false)}>
+                Interests
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 }

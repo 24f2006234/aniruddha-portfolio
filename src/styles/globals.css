@@ -551,10 +551,6 @@ section {
   }
 }
 
-section > .container {
-  width: 100%;
-}
-
 /* Grid */
 .grid-2 {
   display: grid;

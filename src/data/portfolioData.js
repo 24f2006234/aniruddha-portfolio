@@ -1,28 +1,42 @@
-import aeroGridImg from "../assets/AeroGrid_Analytics.png";
-import placementPortalImg from "../assets/placement-portal_app.png";
-import surplusGridImg from "../assets/surplusgrid.png";
-import checkpostImg from "../assets/checkpost.png";
+import aeroGridImg from "../assets/AeroGrid_Analytics.webp";
+import placementPortalImg from "../assets/placement-portal_app.webp";
+import surplusGridImg from "../assets/surplusgrid.webp";
+import checkpostImg from "../assets/checkpost.webp";
 import iitmLogo from "../assets/iitm.png";
+import adamasLogo from "../assets/adamas.png";
 
 export const personalInfo = {
   name: "Aniruddha Das",
-  title: "Full-Stack & ML Engineer",
+  title: "Full-Stack & AI/ML Engineer",
   email: "aniruddha84860@gmail.com",
-  phone: "",
+  phone: "+91 84860 58724",
+  discord: "agent_47xd",
   location: "Greater Kolkata Area, India",
   linkedin: "https://www.linkedin.com/in/aniruddhadas-73a850319",
   github: "https://github.com/24f2006234",
+  resume: "/Aniruddha_Resume.pdf",
   summary:
-    "Dual-degree student — Data Science at IIT Madras, CSE at Adamas University. I build end-to-end applications, from backend APIs and ML integrations to interactive, high-performance frontends. Recent work spans real-time data visualization, full-stack web platforms, and applied ML.",
+    "Dual-degree student in Data Science at IIT Madras and Computer Science at Adamas University. I build end-to-end applications, from backend APIs and ML services to responsive, high-performance interfaces.",
 };
 
-export const education = {
-  degree: "Data Science (IIT M) & CSE (Adamas)",
-  university: "IIT Madras / Adamas University",
-  location: "India",
-  duration: "Present",
-  gpa: "",
-};
+export const education = [
+  {
+    school: "Indian Institute of Technology, Madras",
+    degree: "BS, Data Science and Applications",
+    duration: "2024 – Present",
+    cgpa: "7.58",
+    note: "Project CGPA 9.0",
+    logo: iitmLogo,
+  },
+  {
+    school: "Adamas University",
+    degree: "B.Tech, Computer Science Engineering",
+    duration: "2024 – Present",
+    cgpa: "8.0",
+    note: "",
+    logo: adamasLogo,
+  },
+];
 
 export const skills = {
   Languages: ["Python", "TypeScript", "JavaScript", "C++"],
@@ -35,6 +49,20 @@ export const skills = {
 
 export const projects = [
   {
+    title: "Checkpost",
+    featured: true,
+    tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Framer Motion", "Firebase", "Supabase", "Vercel"],
+    year: "2026",
+    description: "A policy firewall that sits between AI agents and production systems, blocking destructive, costly or data-leaking actions before they run.",
+    bullets: [
+      "Deterministic policy engine that denies unsafe actions, such as destructive SQL, in real time.",
+      "Budget limits, runaway-loop protection and human approval for flagged actions.",
+    ],
+    image: checkpostImg,
+    github: "https://github.com/pradhan-not-found/Checkpost",
+    link: "https://checkpost-ai.vercel.app/",
+  },
+  {
     title: "AeroGrid",
     tech: ["React", "TypeScript", "Node.js", "FastAPI", "PyTorch", "WebGL"],
     year: "2026",
@@ -43,8 +71,6 @@ export const projects = [
       "Time-series sessionization for splitting continuous telemetry into individual flights.",
       "Spatial feature engineering and real-time WebGL rendering under frequent data updates.",
     ],
-    color: "#FF6B6B",
-    iconName: "Plane",
     image: aeroGridImg,
     github: "https://github.com/24f2006234/AeroGrid_Analytics",
   },
@@ -57,8 +83,6 @@ export const projects = [
       "Developed a SPA with session-based auth, REST API gateway, and candidate-job relevance scoring.",
       "Auto-generated candidate insights and interview questions from unstructured PDF resumes.",
     ],
-    color: "#C084FC",
-    iconName: "Briefcase",
     image: placementPortalImg,
     github: "https://github.com/24f2006234/placement-portal_app",
   },
@@ -71,26 +95,9 @@ export const projects = [
       "Built a scalable backend to handle real-time energy metrics.",
       "Developed an interactive dashboard for visualizing grid health."
     ],
-    color: "#4ADE80",
-    iconName: "Zap",
     image: surplusGridImg,
     github: "https://github.com/pradhan-not-found/SurplusGrid",
   },
-  {
-    title: "Checkpost",
-    tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Framer Motion", "Firebase", "Supabase", "Vercel"],
-    year: "2026",
-    description: "Web Application Firewall built exclusively for autonomous AI agents, acting as a wire-level checkpoint between AI agents and financial tools, APIs, or systems.",
-    bullets: [
-      "Wire-level checkpoint positioned entirely between the AI agent and every financial tool, API, or system it attempts to use.",
-      "Secures autonomous agent tool calls and infrastructure with real-time monitoring and policy enforcement.",
-    ],
-    color: "#38BDF8",
-    iconName: "ShieldCheck",
-    image: checkpostImg,
-    github: "https://github.com/pradhan-not-found/Checkpost",
-    link: null,
-  }
 ];
 
 export const certifications = [
@@ -98,28 +105,28 @@ export const certifications = [
     title: "1st Place — Coding Premier League",
     issuer: "Adamas University (SIGNIFIYA)",
     image: "/achievements/au-footer-logo.png",
-    gallery: ["/achievements/cpl1.png", "/achievements/cpl2.png", "/achievements/cpl3.png"],
+    gallery: ["/achievements/cpl1.webp", "/achievements/cpl2.webp", "/achievements/cpl3.webp"],
     icon: "award",
   },
   {
     title: "1st Place — VibeForge 1.0",
     issuer: "Adamas University",
     image: "/achievements/au-footer-logo.png",
-    gallery: ["/achievements/vibeforge1.png", "/achievements/vibeforge2.png", "/achievements/vibeforge3.png"],
+    gallery: ["/achievements/vibeforge1.webp", "/achievements/vibeforge2.webp", "/achievements/vibeforge3.webp"],
     icon: "award",
   },
   {
     title: "1st Runner-Up — InnovateX 2.0",
     issuer: "IMI Kolkata Techfest",
     image: "/achievements/International_Management_Institute_Kolkata_Logo.svg",
-    gallery: ["/achievements/innovatex1.png", "/achievements/innovatex2.png", "/achievements/innovatex3.png"],
+    gallery: ["/achievements/innovatex1.webp", "/achievements/innovatex2.webp", "/achievements/innovatex3.webp"],
     icon: "award",
   },
   {
     title: "Finalist — Hackforge, Srijan",
     issuer: "Jadavpur University",
     image: "/achievements/Jadavpur_University_Logo.svg",
-    gallery: ["/achievements/srijan1.png", "/achievements/srijan2.png", "/achievements/srijan3.png"],
+    gallery: ["/achievements/srijan1.webp", "/achievements/srijan2.webp", "/achievements/srijan3.webp"],
     icon: "award",
   },
   {
@@ -147,20 +154,3 @@ export const certifications = [
     icon: "certificate",
   }
 ];
-
-export const leetcodeStats = {
-  username: "Aniruddha Das",
-  profileUrl: "https://leetcode.com/",
-  solved: 150,
-  totalQuestions: 3300,
-  easySolved: 50,
-  easyTotal: 820,
-  mediumSolved: 80,
-  mediumTotal: 1720,
-  hardSolved: 20,
-  hardTotal: 760,
-  ranking: "Top 10%",
-  streak: 30,
-  activeDays: 100,
-  acceptanceRate: "65.0%",
-};

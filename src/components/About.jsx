@@ -1,38 +1,37 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Terminal, Cpu, Cloud, Database } from "lucide-react";
-import "../styles/globals.css";
 
 export default function About() {
   return (
     <section id="about">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          className="section-head"
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.7 }}
-          style={{ textAlign: 'left', marginBottom: '2rem' }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="section-title">About</h2>
         </motion.div>
 
-        <div style={{ width: '100%' }}>
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.8' }}
-          >
-            <p style={{ marginBottom: '1.5rem' }}>
-              I am a 19-year-old <span style={{ color: 'var(--text-primary)', fontWeight: '500' }}>CS and Data Science student</span> and <span style={{ color: 'var(--text-primary)', fontWeight: '500' }}>Full-Stack &amp; ML Engineer</span> driven by building intelligent, data-driven systems. Through my dual degree in Data Science and Computer Science Engineering, I've built a strong foundation in algorithmic complexity, statistics, and system architecture.
-            </p>
-            <p>
-              I specialize in developing <span style={{ color: 'var(--text-primary)', fontWeight: '500' }}>predictive intelligence layers</span> and applying machine learning to real-world problems, translating complex data into scalable solutions. My full-stack background lets me carry that work end-to-end, from model to deployed application.
-            </p>
-          </motion.div>
-        </div>
+        <motion.div
+          className="about-copy"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p>
+            I am a <strong>Full-Stack &amp; AI/ML Engineer</strong> pursuing a dual degree in Data Science at IIT Madras
+            and Computer Science Engineering at Adamas University. The pairing gives me a working base in statistics,
+            algorithms and system design.
+          </p>
+          <p>
+            I build <strong>predictive and data-driven systems</strong> and take them end to end: model, API and a
+            responsive interface that people can actually use.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

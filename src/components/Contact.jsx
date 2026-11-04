@@ -1,20 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail } from "lucide-react";
+import { Mail, Phone, Check } from "lucide-react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { SiDiscord } from "react-icons/si";
 import { personalInfo } from "../data/portfolioData";
-import "../styles/Contact.css";
+
+const pillStyle = {
+  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+  padding: '0.75rem 1.5rem', background: 'var(--bg-surface)',
+  border: '1px solid var(--border-light)', borderRadius: '99px',
+  color: 'var(--text-primary)', textDecoration: 'none', fontWeight: 500,
+  transition: 'all 0.2s ease', cursor: 'pointer', fontSize: '1rem', fontFamily: 'inherit',
+};
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+  const copyDiscord = async () => {
+    try {
+      await navigator.clipboard.writeText(personalInfo.discord);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch { /* clipboard unavailable */ }
+  };
+
   return (
     <section id="contact" style={{ paddingTop: "4rem", paddingBottom: "2rem" }}>
       <div className="container">
         
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           style={{ textAlign: 'left' }}
         >
           <h2 className="section-title" style={{ marginBottom: "0.5rem" }}>Let's Connect</h2>
@@ -71,6 +88,24 @@ export default function Contact() {
             >
               <FaGithub size={18} /> GitHub
             </a>
+            <a
+              href={`tel:${personalInfo.phone.replace(/s/g, "")}`}
+              style={pillStyle}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--clr-green)'; e.currentTarget.style.color = 'var(--clr-green)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-light)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
+            >
+              <Phone size={18} /> {personalInfo.phone}
+            </a>
+            <button
+              type="button"
+              onClick={copyDiscord}
+              style={pillStyle}
+              aria-label={`Copy Discord username ${personalInfo.discord}`}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--clr-orange)'; e.currentTarget.style.color = 'var(--clr-orange)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-light)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
+            >
+              {copied ? <Check size={18} /> : <SiDiscord size={18} />} {copied ? 'Copied' : `@${personalInfo.discord}`}
+            </button>
           </div>
 
         </motion.div>

@@ -1118,3 +1118,71 @@ body,
   transition-property: background-color, border-color, color, box-shadow;
   transition-duration: 0.3s;
 }
+
+
+/* ── Contact ───────────────────────────────────────────────── */
+.contact-section {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.contact-title {
+  margin-bottom: 0.5rem;
+}
+
+.contact-lede {
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.contact-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.contact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border-light);
+  border-radius: 99px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.contact-pill:hover,
+.contact-pill:focus-visible {
+  border-color: var(--pill-accent, var(--text-muted));
+  color: var(--pill-accent, var(--text-primary));
+}
+
+.contact-pill:focus-visible {
+  outline: 2px solid var(--pill-accent, var(--text-primary));
+  outline-offset: 2px;
+}
+
+.contact-pill:active {
+  transform: scale(0.97);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

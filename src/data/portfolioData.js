@@ -12,7 +12,7 @@ export const personalInfo = {
   phone: "+91 84860 58724",
   discord: "agent_47xd",
   location: "Greater Kolkata Area, India",
-  linkedin: "https://www.linkedin.com/in/aniruddhadas-73a850319",
+  linkedin: "https://www.linkedin.com/in/aniruddha-das-73a850319",
   github: "https://github.com/24f2006234",
   resume: "/Aniruddha_Resume.pdf",
   summary:

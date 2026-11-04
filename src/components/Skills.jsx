@@ -10,45 +10,47 @@ import {
 import { Bot, Cpu, Database, Mic, Network, Search, Sigma, Webhook } from "lucide-react";
 import { skills } from "../data/portfolioData";
 
-// Monochrome icons keep the section calm; colour is reserved for the accent.
+// Brand colours where they read on both themes. Black or very dark logos
+// (Next.js, Express, Vercel, pandas...) follow the text colour instead.
+const NEUTRAL = "var(--text-primary)";
 const ICONS = {
-  Python: SiPython,
-  TypeScript: SiTypescript,
-  JavaScript: SiJavascript,
-  "C++": SiCplusplus,
-  SQL: Database,
-  React: SiReact,
-  "Next.js": SiNextdotjs,
-  "Tailwind CSS": SiTailwindcss,
-  "Three.js": SiThreedotjs,
-  "Node.js": SiNodedotjs,
-  Express: SiExpress,
-  FastAPI: SiFastapi,
-  Flask: SiFlask,
-  "REST APIs": Network,
-  Webhooks: Webhook,
-  PyTorch: SiPytorch,
-  "scikit-learn": SiScikitlearn,
-  pandas: SiPandas,
-  "Feature engineering": Sigma,
-  "Tool calling": Bot,
-  "Groq · Llama 3.3": Cpu,
-  "Gemini API": SiGooglegemini,
-  "Sarvam Voice AI": Mic,
-  "Web search APIs": Search,
-  Supabase: SiSupabase,
-  Firebase: SiFirebase,
-  SQLite: SiSqlite,
-  Vercel: SiVercel,
-  "Google Cloud": SiGooglecloud,
-  Git: SiGit,
+  Python: [SiPython, "#3776AB"],
+  TypeScript: [SiTypescript, "#3178C6"],
+  JavaScript: [SiJavascript, "#F7DF1E"],
+  "C++": [SiCplusplus, "#00599C"],
+  SQL: [Database, "#4479A1"],
+  React: [SiReact, "#61DAFB"],
+  "Next.js": [SiNextdotjs, NEUTRAL],
+  "Tailwind CSS": [SiTailwindcss, "#06B6D4"],
+  "Three.js": [SiThreedotjs, NEUTRAL],
+  "Node.js": [SiNodedotjs, "#339933"],
+  Express: [SiExpress, NEUTRAL],
+  FastAPI: [SiFastapi, "#009688"],
+  Flask: [SiFlask, NEUTRAL],
+  "REST APIs": [Network, NEUTRAL],
+  Webhooks: [Webhook, NEUTRAL],
+  PyTorch: [SiPytorch, "#EE4C2C"],
+  "scikit-learn": [SiScikitlearn, "#F7931E"],
+  pandas: [SiPandas, NEUTRAL],
+  "Feature engineering": [Sigma, NEUTRAL],
+  "Tool calling": [Bot, NEUTRAL],
+  "Groq · Llama 3.3": [Cpu, "#F55036"],
+  "Gemini API": [SiGooglegemini, "#8E75B2"],
+  "Sarvam Voice AI": [Mic, NEUTRAL],
+  "Web search APIs": [Search, NEUTRAL],
+  Supabase: [SiSupabase, "#3ECF8E"],
+  Firebase: [SiFirebase, "#FFCA28"],
+  SQLite: [SiSqlite, "#0F80CC"],
+  Vercel: [SiVercel, NEUTRAL],
+  "Google Cloud": [SiGooglecloud, "#4285F4"],
+  Git: [SiGit, "#F05032"],
 };
 
 function SkillPill({ skill }) {
-  const Icon = ICONS[skill];
+  const [Icon, color] = ICONS[skill] || [];
   return (
     <li className="skill-pill-custom">
-      {Icon && <Icon size={14} aria-hidden="true" />}
+      {Icon && <Icon size={14} color={color} aria-hidden="true" />}
       {skill}
     </li>
   );

@@ -24,7 +24,7 @@ export const education = [
     school: "Indian Institute of Technology, Madras",
     degree: "BS, Data Science and Applications",
     duration: "2024 – Present",
-    cgpa: "7.58",
+    cgpa: "",
     note: "Project CGPA 9.0",
     logo: iitmLogo,
   },
@@ -38,13 +38,14 @@ export const education = [
   },
 ];
 
+// Ordered by focus. Every entry is used in at least one project on this site.
 export const skills = {
-  Languages: ["Python", "TypeScript", "JavaScript", "C++"],
-  Frontend: ["React", "Vite", "Tailwind CSS", "WebGL"],
-  Backend: ["Node.js", "Express", "Flask", "FastAPI"],
-  Database: ["Pandas", "SQL"],
-  "Tools / Platforms": ["Git", "Google Cloud Platform"],
-  "ML / Data": ["PyTorch", "scikit-learn"],
+  "Backend & APIs": ["Node.js", "Express", "FastAPI", "Flask", "REST APIs", "Webhooks"],
+  "AI / ML": ["PyTorch", "scikit-learn", "pandas", "Feature engineering"],
+  "LLMs & Agents": ["Tool calling", "Groq · Llama 3.3", "Gemini API", "Sarvam Voice AI", "Web search APIs"],
+  Languages: ["Python", "TypeScript", "JavaScript", "C++", "SQL"],
+  Frontend: ["React", "Next.js", "Tailwind CSS", "Three.js"],
+  "Data & Cloud": ["Supabase", "Firebase", "SQLite", "Vercel", "Google Cloud", "Git"],
 };
 
 export const projects = [
@@ -64,6 +65,7 @@ export const projects = [
     },
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Groq (Llama 3.3)", "Gemini", "Sarvam Voice AI"],
     year: "2026",
+    highlight: "1st place at Aki Hacks × Hacktoberfest '26",
     description:
       "A voice-first AI agent that works over a real phone call. Say what you need in your own language and it plans the task, runs it and calls you back with the result.",
     bullets: [
@@ -162,6 +164,7 @@ export const projects = [
     },
     tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Framer Motion", "Firebase", "Supabase", "Vercel"],
     year: "2026",
+    highlight: "Deny-by-default policy checks in under a millisecond",
     description: "A policy firewall that sits between AI agents and production systems, blocking destructive, costly or data-leaking actions before they run.",
     bullets: [
       "Deterministic policy engine that denies unsafe actions, such as destructive SQL, in real time.",
@@ -223,6 +226,7 @@ export const projects = [
     },
     tech: ["React", "TypeScript", "Node.js", "FastAPI", "PyTorch", "WebGL"],
     year: "2026",
+    highlight: "~9.1 min mean ETA error, 55% better than baseline",
     description: "Live flight tracking over Indian airspace with a neural network that predicts arrival times.",
     bullets: [
       "Built 6,157 labeled flights from ~29,900 live ADS-B records across 1,557 aircraft.",
@@ -269,7 +273,9 @@ export const projects = [
     },
     tech: ["React", "Vite", "Flask", "Scikit-Learn", "Gemini API"],
     year: "2026",
-    description: "ML-based resume-to-job matching platform.",
+    highlight: "Explainable match scores, backed by quotes from the resume",
+    description:
+      "Campus placement platform that ranks candidates for each job with TF-IDF matching and explains every score with Gemini.",
     bullets: [
       "Developed a SPA with session-based auth, REST API gateway, and candidate-job relevance scoring.",
       "Auto-generated candidate insights and interview questions from unstructured PDF resumes.",

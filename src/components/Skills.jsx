@@ -1,81 +1,56 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  SiPython, SiTypescript, SiJavascript, SiCplusplus, 
-  SiReact, SiVite, SiTailwindcss, SiWebgl, 
-  SiNodedotjs, SiExpress, SiFlask, SiFastapi, 
-  SiPandas, SiGit, SiGooglecloud, SiPytorch, SiScikitlearn 
+import {
+  SiPython, SiTypescript, SiJavascript, SiCplusplus,
+  SiReact, SiNextdotjs, SiTailwindcss, SiThreedotjs,
+  SiNodedotjs, SiExpress, SiFlask, SiFastapi,
+  SiPandas, SiPytorch, SiScikitlearn, SiGooglegemini,
+  SiSupabase, SiFirebase, SiSqlite, SiVercel, SiGooglecloud, SiGit,
 } from "react-icons/si";
-import { FaDatabase } from "react-icons/fa";
+import { Bot, Cpu, Database, Mic, Network, Search, Sigma, Webhook } from "lucide-react";
 import { skills } from "../data/portfolioData";
 
-const getSkillIcon = (skill) => {
-  const map = {
-    "Python": <SiPython color="#3776AB" />,
-    "TypeScript": <SiTypescript color="#3178C6" />,
-    "JavaScript": <SiJavascript color="#F7DF1E" />,
-    "C++": <SiCplusplus color="#00599C" />,
-    "React": <SiReact color="#61DAFB" />,
-    "Vite": <SiVite color="#646CFF" />,
-    "Tailwind CSS": <SiTailwindcss color="#06B6D4" />,
-    "WebGL": <SiWebgl color="#990000" />,
-    "Node.js": <SiNodedotjs color="#339933" />,
-    "Express": <SiExpress color="var(--text-primary)" />,
-    "Flask": <SiFlask color="var(--text-primary)" />,
-    "FastAPI": <SiFastapi color="#009688" />,
-    "Pandas": <SiPandas color="#150458" />,
-    "Git": <SiGit color="#F05032" />,
-    "Google Cloud Platform": <SiGooglecloud color="#4285F4" />,
-    "PyTorch": <SiPytorch color="#EE4C2C" />,
-    "scikit-learn": <SiScikitlearn color="#F7931E" />,
-    "SQL": <FaDatabase color="#4479A1" />
-  };
-  return map[skill];
+// Monochrome icons keep the section calm; colour is reserved for the accent.
+const ICONS = {
+  Python: SiPython,
+  TypeScript: SiTypescript,
+  JavaScript: SiJavascript,
+  "C++": SiCplusplus,
+  SQL: Database,
+  React: SiReact,
+  "Next.js": SiNextdotjs,
+  "Tailwind CSS": SiTailwindcss,
+  "Three.js": SiThreedotjs,
+  "Node.js": SiNodedotjs,
+  Express: SiExpress,
+  FastAPI: SiFastapi,
+  Flask: SiFlask,
+  "REST APIs": Network,
+  Webhooks: Webhook,
+  PyTorch: SiPytorch,
+  "scikit-learn": SiScikitlearn,
+  pandas: SiPandas,
+  "Feature engineering": Sigma,
+  "Tool calling": Bot,
+  "Groq · Llama 3.3": Cpu,
+  "Gemini API": SiGooglegemini,
+  "Sarvam Voice AI": Mic,
+  "Web search APIs": Search,
+  Supabase: SiSupabase,
+  Firebase: SiFirebase,
+  SQLite: SiSqlite,
+  Vercel: SiVercel,
+  "Google Cloud": SiGooglecloud,
+  Git: SiGit,
 };
 
-function BentoCard({ category, items, i }) {
+function SkillPill({ skill }) {
+  const Icon = ICONS[skill];
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.5, delay: i * 0.05 }}
-      style={{
-        background: 'transparent',
-        border: '1px solid var(--border-light)',
-        borderRadius: '8px',
-        padding: '1.25rem',
-        display: 'flex',
-        flexDirection: 'column',
-        boxShadow: 'inset 0 0 4px rgba(0,0,0,0.02)'
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-        <h3 style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)', margin: 0 }}>{category}</h3>
-      </div>
-
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-        {items.map((skill, si) => (
-          <SkillPill key={si} skill={skill} delay={0.05 + si * 0.02} />
-        ))}
-      </div>
-    </motion.div>
-  );
-}
-
-function SkillPill({ skill, delay }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ delay, duration: 0.2 }}
-      className="skill-pill-custom"
-    >
-      <span style={{ fontSize: '14px', display: 'flex', alignItems: 'center' }}>
-        {getSkillIcon(skill) ? getSkillIcon(skill) : null}
-      </span>
+    <li className="skill-pill-custom">
+      {Icon && <Icon size={14} aria-hidden="true" />}
       {skill}
-    </motion.div>
+    </li>
   );
 }
 
@@ -84,24 +59,32 @@ export default function Skills() {
     <section className="skills-section" id="skills">
       <div className="container">
         <motion.div
-          className="skills-header"
+          className="section-head"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          style={{ textAlign: 'left', marginBottom: '2rem' }}
         >
-          <h2 className="section-title">My Technical Skills</h2>
+          <h2 className="section-title">Skills</h2>
         </motion.div>
 
         <div className="skills-bento">
           {Object.entries(skills).map(([category, items], i) => (
-            <BentoCard 
+            <motion.div
               key={category}
-              category={category}
-              items={items}
-              i={i}
-            />
+              className="skill-group"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+            >
+              <h3>{category}</h3>
+              <ul className="skill-list">
+                {items.map((skill) => (
+                  <SkillPill key={skill} skill={skill} />
+                ))}
+              </ul>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -34,7 +34,7 @@ export default function Education() {
                 <div className="edu-degree">{item.degree}</div>
                 <div className="edu-meta">
                   <span>{item.duration}</span>
-                  <span className="chip">CGPA {item.cgpa}</span>
+                  {item.cgpa && <span className="chip">CGPA {item.cgpa}</span>}
                   {item.note && <span className="chip">{item.note}</span>}
                 </div>
               </div>

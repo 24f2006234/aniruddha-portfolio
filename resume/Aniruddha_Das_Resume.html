@@ -92,7 +92,7 @@
   <ul>
     <li>Built the API layer for real inbound and outbound phone calls in 11 languages: a turn endpoint that runs each utterance through the agent for Sarvam&rsquo;s voice pipeline, and a webhook that stores call outcomes and transcripts.</li>
     <li>Implemented the tool-calling loop (intent parsing, planning, execution) with web search over a Tavily &rarr; Brave &rarr; DuckDuckGo fallback chain, persistent memory and scheduled reminder callbacks.</li>
-    <li>Put Groq (Llama 3.3 70B) and Gemini 2.5 Flash behind one OpenAI-compatible client; secured endpoints with shared secrets and HMAC-signed sessions with scrypt hashing.</li>
+    <li>Put Groq (Llama 3.3 70B) and Gemini behind one OpenAI-compatible client; secured endpoints with HMAC-signed sessions.</li>
   </ul>
 </div>
 
@@ -106,8 +106,8 @@
     <a href="https://github.com/pradhan-not-found/Checkpost">GitHub</a></p>
   <ul>
     <li>Built the proxy API that intercepts every AI-agent tool call and returns allow, block or hold before it reaches production.</li>
-    <li>Implemented a deterministic, deny-by-default policy engine (YAML rules, tool allow-lists, exact parameter matching) with no model inference on the enforcement path, keeping checks under 1 ms.</li>
-    <li>Added cost governance that tracks spend and retries per run and hard-stops runaway agents, plus a human approval queue and audit trail in Firestore.</li>
+    <li>Implemented a deny-by-default policy engine (YAML rules, tool allow-lists, parameter matching) with sub-millisecond checks.</li>
+    <li>Added per-run spend and retry limits that hard-stop runaway agents, plus a human approval queue in Firestore.</li>
   </ul>
 </div>
 
@@ -119,7 +119,7 @@
   <p class="meta">React, TypeScript, Three.js, Node.js/Express, FastAPI, PyTorch |
     <a href="https://github.com/24f2006234/AeroGrid_Analytics">GitHub</a></p>
   <ul>
-    <li>Architected a three-service system (React/Three.js, Express gateway, FastAPI ML service) tracking ~253 live aircraft; a one-minute cache with last-good fallback survives OpenSky rate limits and caps upstream calls at one per minute.</li>
+    <li>Architected a three-service system (React/Three.js, Express gateway, FastAPI ML service) tracking ~253 live aircraft; a cache with last-good fallback survives OpenSky rate limits and caps upstream calls at one per minute.</li>
     <li>Built a pipeline turning ~29,900 raw ADS-B records (1,557 aircraft) into 6,157 labeled flights via 30-minute track splitting, vectorized Haversine distance to 4 hubs and time-to-arrival labels.</li>
     <li>Trained a PyTorch MLP to ~9.1 min mean ETA error on held-out data, 55% below a mean baseline (R&sup2; 0.67), with 52% of predictions within 5 min and ~0.03 ms inference.</li>
   </ul>
@@ -127,15 +127,16 @@
 
 <div class="entry">
   <div class="row">
-    <span><span class="title">Placement Portal &ndash; Resume-to-Job Matching Platform</span> | IIT Madras</span>
+    <span><span class="title">Placement Portal &ndash; Explainable AI Matching</span> | IIT Madras</span>
     <span class="when">Jan 2026 &ndash; Jun 2026</span>
   </div>
-  <p class="meta">React, Vite, Flask, SQLAlchemy, scikit-learn, Gemini API |
+  <p class="meta">React, Flask, SQLAlchemy, scikit-learn, Gemini API, Pytest |
     <a href="https://github.com/24f2006234/placement-portal_app">GitHub</a></p>
   <ul>
-    <li>Built a Flask REST API and React SPA with session-cookie auth, replacing a server-rendered Jinja prototype.</li>
-    <li>Ranked candidates per job with TF-IDF and cosine similarity over parsed PDF resumes, weighting explicit technical terms.</li>
-    <li>Generated explainable Gemini evaluations citing resume evidence, cached to avoid repeat API calls.</li>
+    <li>Built a recruitment platform with 19 REST endpoints, 3-role access control, a 5-table schema and salted password hashing.</li>
+    <li>Rebuilt candidate ranking to combine skill coverage with TF-IDF (103-skill dictionary, aliases, skill implications), raising NDCG@5 from 0.84 to 0.96 and skill-extraction F1 from 80% to 98% on 400 hand-labeled resume&ndash;job pairs.</li>
+    <li>Cut ranking time for 1,000 candidates ~11&times; (840 &rarr; 75 ms) by scoring the pool in one TF-IDF pass, and showed matched and missing skills beside each score.</li>
+    <li>Added cached Gemini JSON candidate reports (0.2 ms repeat views), 120 pytest tests at 99% coverage and GitHub Actions CI.</li>
   </ul>
 </div>
 
@@ -154,7 +155,7 @@
   <p><b>Backend &amp; APIs:</b> Node.js, Express.js, FastAPI, Flask, Next.js, REST API design, Webhooks, Authentication (sessions, HMAC)</p>
   <p><b>AI / ML:</b> PyTorch, scikit-learn, pandas, Feature Engineering, TF-IDF, LLM Tool Calling, Groq (Llama 3.3), Gemini API</p>
   <p><b>Frontend:</b> React, Next.js, Tailwind CSS, Three.js, WebGL</p>
-  <p><b>Data &amp; Cloud:</b> Supabase, Firebase/Firestore, SQLite, Google BigQuery, Google Cloud Platform, Vercel, Git, Linux</p>
+  <p><b>Data &amp; Cloud:</b> Supabase, Firebase/Firestore, SQLite, BigQuery, Google Cloud, Vercel, Git, GitHub Actions, Pytest, Linux</p>
   <p><b>Certifications:</b> Google Cloud Skill Badge, Use ML APIs on Google Cloud (2026); Programming in Java, NPTEL (2026)</p>
 </div>
 

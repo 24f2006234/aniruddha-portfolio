@@ -6,6 +6,7 @@ import {
   SiNodedotjs, SiExpress, SiFlask, SiFastapi,
   SiPandas, SiPytorch, SiScikitlearn, SiGooglegemini,
   SiSupabase, SiFirebase, SiSqlite, SiVercel, SiGooglecloud, SiGit,
+  SiPytest, SiGithubactions,
 } from "react-icons/si";
 import { Bot, Cpu, Database, Mic, Network, Search, Sigma, Webhook } from "lucide-react";
 import { skills } from "../data/portfolioData";
@@ -44,6 +45,8 @@ const ICONS = {
   Vercel: [SiVercel, NEUTRAL],
   "Google Cloud": [SiGooglecloud, "#4285F4"],
   Git: [SiGit, "#F05032"],
+  Pytest: [SiPytest, "#0A9EDC"],
+  "GitHub Actions": [SiGithubactions, "#2088FF"],
 };
 
 function SkillPill({ skill }) {

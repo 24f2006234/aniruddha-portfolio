@@ -40,12 +40,12 @@ export const education = [
 
 // Ordered by focus. Every entry is used in at least one project on this site.
 export const skills = {
-  "Backend & APIs": ["Node.js", "Express", "FastAPI", "Flask", "REST APIs", "Webhooks"],
+  "Backend & APIs": ["Node.js", "Express", "FastAPI", "Flask", "REST APIs", "Webhooks", "Pytest"],
   "AI / ML": ["PyTorch", "scikit-learn", "pandas", "Feature engineering"],
   "LLMs & Agents": ["Tool calling", "Groq · Llama 3.3", "Gemini API", "Sarvam Voice AI", "Web search APIs"],
   Languages: ["Python", "TypeScript", "JavaScript", "C++", "SQL"],
   Frontend: ["React", "Next.js", "Tailwind CSS", "Three.js"],
-  "Data & Cloud": ["Supabase", "Firebase", "SQLite", "Vercel", "Google Cloud", "Git"],
+  "Data & Cloud": ["Supabase", "Firebase", "SQLite", "Vercel", "Google Cloud", "Git", "GitHub Actions"],
 };
 
 export const projects = [
@@ -238,48 +238,58 @@ export const projects = [
   {
     slug: "placement-portal",
     title: "Placement Portal",
-    tagline: "Campus placement platform with ML resume matching",
+    tagline: "Campus recruitment with explainable AI matching",
     context: "Academic project · IIT Madras",
+    metrics: [
+      { value: "0.84 → 0.96", label: "NDCG@5 on 400 hand-labeled pairs" },
+      { value: "98%", label: "Skill-extraction F1, up from 80%" },
+      { value: "~11×", label: "Faster ranking for 1,000 candidates" },
+      { value: "99%", label: "Test coverage across 120 tests" },
+    ],
     details: {
       overview:
-        "A placement platform with separate portals for students, companies and administrators. Students upload a PDF resume once; recruiters get a ranked list of candidates for each drive, with an explainable AI breakdown of why each candidate fits.",
+        "A campus recruitment platform for students, companies and administrators. Students upload a resume once; recruiters get every applicant ranked for each job, with the matched and missing skills behind each score and an AI-written candidate report.",
       problem:
-        "Recruiters reviewing campus applications read hundreds of unstructured resumes per drive, and plain keyword filters miss context. The aim was to rank candidates automatically while keeping the score transparent enough for a recruiter to trust.",
+        "Recruiters reviewing campus applications read hundreds of unstructured resumes per drive, and plain keyword filters miss related skills and reward keyword stuffing. The goal was a ranking recruiters could trust: accurate, fast at scale, and able to explain itself.",
       approach: [
-        "PDF resumes are streamed to the server and parsed in memory with pypdf to extract profile data and auto-fill student forms.",
-        "Job descriptions and resumes are vectorized with TF-IDF, weighted to boost explicit technical terms and dampen document-length noise.",
-        "Cosine similarity produces a 0–100% match score used to rank candidates per drive.",
-        "Gemini generates a structured evaluation (skills, education, experience, projects) with evidence quoted from the resume, plus strengths, gaps and risks.",
+        "Rebuilt the ranking engine to combine skill coverage with TF-IDF similarity, instead of relying on text similarity alone.",
+        "Built a 103-skill dictionary with alias handling and skill implications, so related skills count without an exact keyword match.",
+        "Scored the whole candidate pool in a single TF-IDF pass rather than comparing candidates one at a time.",
+        "Gemini generates structured JSON candidate reports, cached in the database so repeat views don't call the API again.",
+      ],
+      results: [
+        "On a hand-labeled benchmark of 400 resume–job pairs, ranking quality (NDCG@5) rose from 0.84 to 0.96.",
+        "Skill-extraction F1 improved from 80% to 98%.",
+        "Ranking 1,000 candidates dropped from 840 ms to 75 ms, about 11× faster.",
+        "Cached candidate reports load in about 0.2 ms on repeat views.",
       ],
       architecture: [
-        { label: "Frontend", text: "React and Vite single-page app with client-side routing and protected routes that survive page refreshes." },
-        { label: "Backend", text: "Flask REST API serving JSON only, with SQLAlchemy models for students, companies, drives and applications." },
-        { label: "Auth", text: "Session-based authentication using secure HTTP cookies across origins." },
-        { label: "AI layer", text: "LLM reports are cached in the database with schema-version checks, so repeat views are instant and API cost stays low." },
+        { label: "Frontend", text: "React and Vite single-page app with separate views for students, companies and administrators." },
+        { label: "Backend", text: "Flask REST API with 19 endpoints, and SQLAlchemy over a 5-table schema." },
+        { label: "Security", text: "Three-role access control, salted password hashing, ownership checks on every resume access, and configuration kept out of the code." },
+        { label: "AI layer", text: "Gemini candidate reports returned as structured JSON and cached in the database." },
+        { label: "Quality", text: "120 pytest tests at 99% coverage, run on every push by GitHub Actions CI." },
       ],
       highlights: [
-        "Explainable scoring: the AI breakdown sums to the final match score and cites the resume.",
-        "Migrated from server-rendered Jinja templates to a fully decoupled API and SPA.",
+        "Recruiters see the matched and missing skills next to every score, not just a number.",
+        "Ranking changes are measured against a hand-labeled benchmark rather than judged by eye.",
       ],
       stack: {
         Frontend: ["React", "Vite", "React Router", "Bootstrap"],
         Backend: ["Python", "Flask", "SQLAlchemy", "SQLite"],
-        "ML / AI": ["scikit-learn", "pypdf", "Gemini API"],
+        "ML / AI": ["scikit-learn", "Gemini API", "pypdf"],
+        "Testing & CI": ["Pytest", "GitHub Actions"],
       },
       next: [
-        "Evaluate ranking quality against real recruiter shortlists.",
-        "Replace keyword skill extraction with an embedding-based approach.",
+        "Validate rankings against real recruiter shortlists from a live placement drive.",
+        "Compare embedding-based similarity with TF-IDF on the same benchmark.",
       ],
     },
-    tech: ["React", "Vite", "Flask", "Scikit-Learn", "Gemini API"],
+    tech: ["React", "Flask", "SQLAlchemy", "scikit-learn", "Gemini API", "Pytest"],
     year: "2026",
-    highlight: "Explainable match scores, backed by quotes from the resume",
+    highlight: "NDCG@5 up from 0.84 to 0.96, with ~11× faster ranking",
     description:
-      "Campus placement platform that ranks candidates for each job with TF-IDF matching and explains every score with Gemini.",
-    bullets: [
-      "Developed a SPA with session-based auth, REST API gateway, and candidate-job relevance scoring.",
-      "Auto-generated candidate insights and interview questions from unstructured PDF resumes.",
-    ],
+      "Campus recruitment platform that ranks every applicant with skill-aware TF-IDF matching and shows recruiters which skills matched or were missing.",
     image: placementPortalImg,
     github: "https://github.com/24f2006234/placement-portal_app",
   },

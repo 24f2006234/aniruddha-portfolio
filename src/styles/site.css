@@ -190,13 +190,17 @@ main {
   letter-spacing: 0;
 }
 
+.projects-container {
+  max-width: 960px;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .projects-grid {
     grid-template-columns: minmax(0, 1fr);
   }

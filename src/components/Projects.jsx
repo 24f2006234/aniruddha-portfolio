@@ -39,7 +39,7 @@ export default function Projects() {
         )}
       </AnimatePresence>
 
-      <div className="container">
+      <div className="container projects-container">
         <motion.div
           className="section-head"
           initial={{ opacity: 0, y: 16 }}
